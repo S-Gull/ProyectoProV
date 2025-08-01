@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $para_ah = ""; // SIEMPRE la empresa
+    $para_ah = "alanghidalgo@gmail.com"; // SIEMPRE la empresa
 
     try {
         $mail_ah = new PHPMailer_ah();
@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail_ah->Port = 465;
         $mail_ah->SMTPSecure = PHPMailer_ah::ENCRYPTION_SMTPS;
         $mail_ah->SMTPAuth = true;
-        $email_ah = ''; // Tu correo empresa
+        $email_ah = 'alanghidalgo@gmail.com'; // Tu correo empresa
         $mail_ah->Username = $email_ah;
-        $mail_ah->Password = '';
+        $mail_ah->Password = 'rryd malq fkin rtgp';
         $mail_ah->setFrom($email_ah, 'Nexus AG');
         $mail_ah->addReplyTo($remitente_ah, $nombre_ah);
         $mail_ah->addAddress($para_ah, 'Nexus AG');

@@ -14,7 +14,7 @@ class EstadoJuego_ah_ga {
     this.turnoActual_ah_ga = this.turnoActual_ah_ga === 'soldado' ? 'oficial' : 'soldado';
   }
 
-  reiniciar() {
+  reiniciar_ah_ga() {
     this.turnoActual_ah_ga = 'soldado';
     this.juegoActivo_ah_ga = true;
     this.piezaSeleccionada_ah_ga = null;
@@ -28,76 +28,76 @@ class InterfazUsuario_ah_ga {
     this.elementoTurno_ah_ga = document.getElementById('turnoActual_ah_ga');
   }
 
-  actualizarTurno_ah_ga(turno) {
+  actualizarTurno_ah_ga(turno_ah_ga) {
     if (this.elementoTurno_ah_ga) {
-      this.elementoTurno_ah_ga.textContent = turno === 'soldado' 
-        ? 'Atacantes (Soldados)' 
+      this.elementoTurno_ah_ga.textContent = turno_ah_ga === 'soldado'
+        ? 'Atacantes (Soldados)'
         : 'Defensores (Oficiales)';
     }
   }
 
-  mostrarModalResultado(mensaje) {
-    const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50';
-    modal.innerHTML = `
+  mostrarModalResultado_ah_ga(mensaje_ah_ga) {
+    const modal_ah_ga = document.createElement('div');
+    modal_ah_ga.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50';
+    modal_ah_ga.innerHTML = `
       <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-sm text-center">
-        <h2 class="text-2xl font-bold text-green-400 mb-6">${mensaje}</h2>
-        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold transition-colors" 
+        <h2 class="text-2xl font-bold text-green-400 mb-6">${mensaje_ah_ga}</h2>
+        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold transition-colors"
                 id="reiniciarBtn_ah_ga">
           Jugar de nuevo
         </button>
       </div>
     `;
-    document.body.appendChild(modal);
-    return modal;
+    document.body.appendChild(modal_ah_ga);
+    return modal_ah_ga;
   }
 }
 
 /* Clase para manejar las reglas del juego */
 class ReglasJuego_ah_ga {
-  static verificarVictoria(tablero) {
-    if (this.verificarVictoriaAtacantes(tablero)) {
+  static verificarVictoria_ah_ga(tablero_ah_ga) {
+    if (this.verificarVictoriaAtacantes_ah_ga(tablero_ah_ga)) {
       return '¡Los Atacantes han ganado ocupando la fortaleza!';
     }
-    if (this.verificarVictoriaDefensores(tablero)) {
+    if (this.verificarVictoriaDefensores_ah_ga(tablero_ah_ga)) {
       return '¡Los Defensores han ganado eliminando suficientes soldados!';
     }
-    if (this.verificarOficialesCapturados(tablero)) {
+    if (this.verificarOficialesCapturados_ah_ga(tablero_ah_ga)) {
       return '¡Los Atacantes han ganado capturando a ambos oficiales!';
     }
     return null;
   }
 
-  static verificarVictoriaAtacantes(tablero) {
+  static verificarVictoriaAtacantes_ah_ga(tablero_ah_ga) {
     // Primero encontrar todas las casillas fortaleza
-    const fortalezas = [];
-    for (let fila = 0; fila < tablero.filasTotales_ah_ga; fila++) {
-      for (let col = 0; col < tablero.columnasTotales_ah_ga; col++) {
-        const casilla = tablero.obtenerCasilla_ah_ga(fila, col);
-        if (casilla && casilla.esFortaleza_ah_ga) {
-          fortalezas.push(casilla);
+    const fortalezas_ah_ga = [];
+    for (let fila_ah_ga = 0; fila_ah_ga < tablero_ah_ga.filasTotales_ah_ga; fila_ah_ga++) {
+      for (let col_ah_ga = 0; col_ah_ga < tablero_ah_ga.columnasTotales_ah_ga; col_ah_ga++) {
+        const casilla_ah_ga = tablero_ah_ga.obtenerCasilla_ah_ga(fila_ah_ga, col_ah_ga);
+        if (casilla_ah_ga && casilla_ah_ga.esFortaleza_ah_ga) {
+          fortalezas_ah_ga.push(casilla_ah_ga);
         }
       }
     }
-    
+
     // Verificar que todas las fortalezas estén ocupadas por soldados
-    return fortalezas.every(casilla => 
-      casilla.pieza_ah_ga && casilla.pieza_ah_ga.tipoPieza_ah_ga === 'soldado'
+    return fortalezas_ah_ga.every(casilla_ah_ga =>
+      casilla_ah_ga.pieza_ah_ga && casilla_ah_ga.pieza_ah_ga.tipoPieza_ah_ga === 'soldado'
     );
   }
 
-  static verificarVictoriaDefensores(tablero) {
-    const totalSoldados = tablero.casillasJuego_ah_ga.flat().filter(
-      casilla => casilla && casilla.pieza_ah_ga?.tipoPieza_ah_ga === 'soldado'
+  static verificarVictoriaDefensores_ah_ga(tablero_ah_ga) {
+    const totalSoldados_ah_ga = tablero_ah_ga.casillasJuego_ah_ga.flat().filter(
+      casilla_ah_ga => casilla_ah_ga && casilla_ah_ga.pieza_ah_ga?.tipoPieza_ah_ga === 'soldado'
     ).length;
-    return totalSoldados < 9;
+    return totalSoldados_ah_ga < 9;
   }
 
-  static verificarOficialesCapturados(tablero) {
-    const totalOficiales = tablero.casillasJuego_ah_ga.flat().filter(
-      casilla => casilla && casilla.pieza_ah_ga?.tipoPieza_ah_ga === 'oficial'
+  static verificarOficialesCapturados_ah_ga(tablero_ah_ga) {
+    const totalOficiales_ah_ga = tablero_ah_ga.casillasJuego_ah_ga.flat().filter(
+      casilla_ah_ga => casilla_ah_ga && casilla_ah_ga.pieza_ah_ga?.tipoPieza_ah_ga === 'oficial'
     ).length;
-    return totalOficiales === 0;
+    return totalOficiales_ah_ga === 0;
   }
 }
 
@@ -110,111 +110,111 @@ export class ControladorJuego_ah_ga {
     this.estadoJuego_ah_ga = new EstadoJuego_ah_ga();
     this.interfazUsuario_ah_ga = new InterfazUsuario_ah_ga();
 
-    this.configurarEventos();
-    this.inicializarJuego();
+    this.configurarEventos_ah_ga();
+    this.inicializarJuego_ah_ga();
   }
 
-  configurarEventos() {
-    this.canvasJuego_ah_ga.addEventListener('click', (evento) => 
-      this.manejarClicCanvas(evento));
-    this.canvasJuego_ah_ga.addEventListener('mousemove', (evento) => 
-      this.manejarMovimientoRaton(evento));
-    
-    document.getElementById('nuevoJuegoBtn_ah_ga').addEventListener('click', () => 
-      this.reiniciarPartida());
+  configurarEventos_ah_ga() {
+    this.canvasJuego_ah_ga.addEventListener('click', (evento_ah_ga) =>
+      this.manejarClicCanvas_ah_ga(evento_ah_ga));
+    this.canvasJuego_ah_ga.addEventListener('mousemove', (evento_ah_ga) =>
+      this.manejarMovimientoRaton_ah_ga(evento_ah_ga));
+
+    document.getElementById('nuevoJuegoBtn_ah_ga').addEventListener('click', () =>
+      this.reiniciarPartida_ah_ga());
   }
 
-  inicializarJuego() {
+  inicializarJuego_ah_ga() {
     this.interfazUsuario_ah_ga.actualizarTurno_ah_ga(this.estadoJuego_ah_ga.turnoActual_ah_ga);
-    this.dibujarEstadoActual();
+    this.dibujarEstadoActual_ah_ga();
   }
 
-  manejarClicCanvas(evento) {
+  manejarClicCanvas_ah_ga(evento_ah_ga) {
     if (!this.estadoJuego_ah_ga.juegoActivo_ah_ga) return;
 
-    const { fila, columna } = this.obtenerPosicionCasilla(evento);
-    const casilla = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila, columna);
+    const { fila_ah_ga, columna_ah_ga } = this.obtenerPosicionCasilla_ah_ga(evento_ah_ga);
+    const casilla_ah_ga = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila_ah_ga, columna_ah_ga);
 
-    if (!casilla || !casilla.esValida_ah_ga) {
-      this.deseleccionarPieza();
+    if (!casilla_ah_ga || !casilla_ah_ga.esValida_ah_ga) {
+      this.deseleccionarPieza_ah_ga();
       return;
     }
 
     if (this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga) {
-      this.intentarMoverPieza(fila, columna);
+      this.intentarMoverPieza_ah_ga(fila_ah_ga, columna_ah_ga);
     } else {
-      this.intentarSeleccionarPieza(casilla);
+      this.intentarSeleccionarPieza_ah_ga(casilla_ah_ga);
     }
 
-    this.dibujarEstadoActual();
+    this.dibujarEstadoActual_ah_ga();
   }
 
-  obtenerPosicionCasilla(evento) {
-    const rect = this.canvasJuego_ah_ga.getBoundingClientRect();
+  obtenerPosicionCasilla_ah_ga(evento_ah_ga) {
+    const rect_ah_ga = this.canvasJuego_ah_ga.getBoundingClientRect();
     return {
-      fila: Math.floor((evento.clientY - rect.top) / this.tableroPartida_ah_ga.tamanoCasilla_ah_ga),
-      columna: Math.floor((evento.clientX - rect.left) / this.tableroPartida_ah_ga.tamanoCasilla_ah_ga)
+      fila_ah_ga: Math.floor((evento_ah_ga.clientY - rect_ah_ga.top) / this.tableroPartida_ah_ga.tamanoCasilla_ah_ga),
+      columna_ah_ga: Math.floor((evento_ah_ga.clientX - rect_ah_ga.left) / this.tableroPartida_ah_ga.tamanoCasilla_ah_ga)
     };
   }
 
-  intentarMoverPieza(fila, columna) {
-    const movimientoValido = this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga.some(
-      m => m.fila_ah_ga === fila && m.columna_ah_ga === columna
+  intentarMoverPieza_ah_ga(fila_ah_ga, columna_ah_ga) {
+    const movimientoValido_ah_ga = this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga.some(
+      m_ah_ga => m_ah_ga.fila_ah_ga === fila_ah_ga && m_ah_ga.columna_ah_ga === columna_ah_ga
     );
 
-    if (movimientoValido) {
-      this.realizarMovimiento(fila, columna);
+    if (movimientoValido_ah_ga) {
+      this.realizarMovimiento_ah_ga(fila_ah_ga, columna_ah_ga);
       this.estadoJuego_ah_ga.cambiarTurno_ah_ga();
       this.interfazUsuario_ah_ga.actualizarTurno_ah_ga(this.estadoJuego_ah_ga.turnoActual_ah_ga);
     }
-    this.deseleccionarPieza();
+    this.deseleccionarPieza_ah_ga();
   }
 
-  realizarMovimiento(fila, columna) {
-    const movimiento = this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga.find(
-      m => m.fila_ah_ga === fila && m.columna_ah_ga === columna
+  realizarMovimiento_ah_ga(fila_ah_ga, columna_ah_ga) {
+    const movimiento_ah_ga = this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga.find(
+      m_ah_ga => m_ah_ga.fila_ah_ga === fila_ah_ga && m_ah_ga.columna_ah_ga === columna_ah_ga
     );
 
     // Mover pieza
-    const pieza = this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga;
-    const casillaOrigen = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(
-      pieza.filaPosicion_ah_ga, 
-      pieza.columnaPosicion_ah_ga
+    const pieza_ah_ga = this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga;
+    const casillaOrigen_ah_ga = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(
+      pieza_ah_ga.filaPosicion_ah_ga,
+      pieza_ah_ga.columnaPosicion_ah_ga
     );
-    casillaOrigen.pieza_ah_ga = null;
+    casillaOrigen_ah_ga.pieza_ah_ga = null;
 
-    pieza.moverA_ah_ga(fila, columna);
-    this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila, columna).pieza_ah_ga = pieza;
+    pieza_ah_ga.moverA_ah_ga(fila_ah_ga, columna_ah_ga);
+    this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila_ah_ga, columna_ah_ga).pieza_ah_ga = pieza_ah_ga;
 
     // Manejar captura
-    if (movimiento?.esCaptura_ah_ga) {
+    if (movimiento_ah_ga?.esCaptura_ah_ga) {
       this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(
-        movimiento.capturada_ah_ga.fila, 
-        movimiento.capturada_ah_ga.columna
+        movimiento_ah_ga.capturada_ah_ga.fila,
+        movimiento_ah_ga.capturada_ah_ga.columna
       ).pieza_ah_ga = null;
     }
 
-    this.verificarEstadoJuego();
+    this.verificarEstadoJuego_ah_ga();
   }
 
-  intentarSeleccionarPieza(casilla) {
-    if (casilla.pieza_ah_ga && this.esTurnoValido(casilla.pieza_ah_ga)) {
-      this.seleccionarPieza(casilla.pieza_ah_ga);
+  intentarSeleccionarPieza_ah_ga(casilla_ah_ga) {
+    if (casilla_ah_ga.pieza_ah_ga && this.esTurnoValido_ah_ga(casilla_ah_ga.pieza_ah_ga)) {
+      this.seleccionarPieza_ah_ga(casilla_ah_ga.pieza_ah_ga);
     }
   }
 
-  esTurnoValido(pieza) {
-    return this.estadoJuego_ah_ga.turnoActual_ah_ga === pieza.tipoPieza_ah_ga;
+  esTurnoValido_ah_ga(pieza_ah_ga) {
+    return this.estadoJuego_ah_ga.turnoActual_ah_ga === pieza_ah_ga.tipoPieza_ah_ga;
   }
 
-  seleccionarPieza(pieza) {
-    this.deseleccionarPieza();
-    this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga = pieza;
-    pieza.estaSeleccionada_ah_ga = true;
-    this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga = pieza.calcularMovimientosValidos_ah_ga(this.tableroPartida_ah_ga);
+  seleccionarPieza_ah_ga(pieza_ah_ga) {
+    this.deseleccionarPieza_ah_ga();
+    this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga = pieza_ah_ga;
+    pieza_ah_ga.estaSeleccionada_ah_ga = true;
+    this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga = pieza_ah_ga.calcularMovimientosValidos_ah_ga(this.tableroPartida_ah_ga);
   }
 
-  deseleccionarPieza() {
+  deseleccionarPieza_ah_ga() {
     if (this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga) {
       this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga.estaSeleccionada_ah_ga = false;
       this.estadoJuego_ah_ga.piezaSeleccionada_ah_ga = null;
@@ -222,58 +222,58 @@ export class ControladorJuego_ah_ga {
     this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga = [];
   }
 
-  manejarMovimientoRaton(evento) {
+  manejarMovimientoRaton_ah_ga(evento_ah_ga) {
     if (!this.estadoJuego_ah_ga.juegoActivo_ah_ga) return;
 
-    const { fila, columna } = this.obtenerPosicionCasilla(evento);
-    const casilla = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila, columna);
+    const { fila_ah_ga, columna_ah_ga } = this.obtenerPosicionCasilla_ah_ga(evento_ah_ga);
+    const casilla_ah_ga = this.tableroPartida_ah_ga.obtenerCasilla_ah_ga(fila_ah_ga, columna_ah_ga);
 
     // Resetear hover
-    this.tableroPartida_ah_ga.casillasJuego_ah_ga.flat().forEach(c => {
-      if (c.pieza_ah_ga) c.pieza_ah_ga.estaSobre_ah_ga = false;
+    this.tableroPartida_ah_ga.casillasJuego_ah_ga.flat().forEach(c_ah_ga => {
+      if (c_ah_ga.pieza_ah_ga) c_ah_ga.pieza_ah_ga.estaSobre_ah_ga = false;
     });
 
     // Aplicar hover si es válido
-    if (casilla?.esValida_ah_ga && casilla.pieza_ah_ga && 
-        this.esTurnoValido(casilla.pieza_ah_ga) &&
-        !casilla.pieza_ah_ga.estaSeleccionada_ah_ga) {
-      casilla.pieza_ah_ga.estaSobre_ah_ga = true;
+    if (casilla_ah_ga?.esValida_ah_ga && casilla_ah_ga.pieza_ah_ga &&
+        this.esTurnoValido_ah_ga(casilla_ah_ga.pieza_ah_ga) &&
+        !casilla_ah_ga.pieza_ah_ga.estaSeleccionada_ah_ga) {
+      casilla_ah_ga.pieza_ah_ga.estaSobre_ah_ga = true;
     }
 
-    this.dibujarEstadoActual();
+    this.dibujarEstadoActual_ah_ga();
   }
 
-  verificarEstadoJuego() {
-    const resultado = ReglasJuego_ah_ga.verificarVictoria(this.tableroPartida_ah_ga);
-    if (resultado) {
-      this.mostrarResultado(resultado);
+  verificarEstadoJuego_ah_ga() {
+    const resultado_ah_ga = ReglasJuego_ah_ga.verificarVictoria_ah_ga(this.tableroPartida_ah_ga);
+    if (resultado_ah_ga) {
+      this.mostrarResultado_ah_ga(resultado_ah_ga);
     }
   }
 
-  mostrarResultado(mensaje) {
+  mostrarResultado_ah_ga(mensaje_ah_ga) {
     this.estadoJuego_ah_ga.juegoActivo_ah_ga = false;
-    const modal = this.interfazUsuario_ah_ga.mostrarModalResultado(mensaje);
-    
-    modal.querySelector('#reiniciarBtn_ah_ga').addEventListener('click', () => {
-      modal.remove();
-      this.reiniciarPartida();
+    const modal_ah_ga = this.interfazUsuario_ah_ga.mostrarModalResultado_ah_ga(mensaje_ah_ga);
+
+    modal_ah_ga.querySelector('#reiniciarBtn_ah_ga').addEventListener('click', () => {
+      modal_ah_ga.remove();
+      this.reiniciarPartida_ah_ga();
     });
   }
 
-  dibujarEstadoActual() {
+  dibujarEstadoActual_ah_ga() {
     this.tableroPartida_ah_ga.dibujarTablero_ah_ga(
-      this.contextoJuego_ah_ga, 
+      this.contextoJuego_ah_ga,
       this.estadoJuego_ah_ga.movimientosPermitidos_ah_ga
     );
   }
 
-  reiniciarPartida() {
+  reiniciarPartida_ah_ga() {
     this.tableroPartida_ah_ga = new TableroJuego_ah_ga(
-      this.canvasJuego_ah_ga.width, 
-      this.canvasJuego_ga.height
+      this.canvasJuego_ah_ga.width,
+      this.canvasJuego_ah_ga.height
     );
-    this.estadoJuego_ah_ga.reiniciar();
+    this.estadoJuego_ah_ga.reiniciar_ah_ga();
     this.interfazUsuario_ah_ga.actualizarTurno_ah_ga(this.estadoJuego_ah_ga.turnoActual_ah_ga);
-    this.dibujarEstadoActual();
+    this.dibujarEstadoActual_ah_ga();
   }
 }
