@@ -1,0 +1,67 @@
+/* css/juego.css */
+.casilla {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #454955;
+  position: relative;
+  margin: 2px;
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.fortaleza {
+  background-color: #3f7d20;
+}
+
+.soldado {
+  width: 40px;
+  height: 40px;
+  background-color: #72b01d;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.oficial {
+  width: 40px;
+  height: 40px;
+  background-color: #ff3a3a;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.seleccionada {
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.7);
+}
+
+#canvasJuego_ah_ga {
+  background-color: #1a1a1a;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.modal-victoria_ah_ga {
+  position: fixed;
+  inset: 0;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.contenido-modal_ah_ga {
+  background-color: #1f2937;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  max-width: 24rem;
+  animation: aparecer_ah_ga 0.3s ease-out;
+}
+@keyframes aparecer_ah_ga {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

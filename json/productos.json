@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "nombre": "Crash Bandicoot N. Sane Trilogy",
+    "cantidad": 1,
+    "desc": "Remaster de los clásicos plataformeros",
+    "precio": 39.99,
+    "img": "../img/Crash.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 2,
+    "nombre": "Mortal Kombat 11 Ultimate",
+    "cantidad": 1,
+    "desc": "Juego de lucha con todos los DLCs incluidos",
+    "precio": 49.99,
+    "img": "../img/mortal.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 3,
+    "nombre": "Pac-Man Championship Edition 2",
+    "cantidad": 1,
+    "desc": "Versión moderna del clásico arcade",
+    "precio": 19.99,
+    "img": "../img/pacman.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 4,
+    "nombre": "Dragon Ball Z: Kakarot",
+    "cantidad": 1,
+    "desc": "RPG de la saga Dragon Ball Z",
+    "precio": 59.99,
+    "img": "../img/dragonball.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 5,
+    "nombre": "Naruto Shippuden: Ultimate Ninja Storm 4",
+    "cantidad": 1,
+    "desc": "Juego de lucha con la historia de Naruto",
+    "precio": 49.99,
+    "img": "../img/naruto.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 6,
+    "nombre": "Attack on Titan 2: Final Battle",
+    "cantidad": 1,
+    "desc": "Basado en el anime Shingeki no Kyojin",
+    "precio": 59.99,
+    "img": "../img/shingeki.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 7,
+    "nombre": "League of Legends",
+    "cantidad": 1,
+    "desc": "MOBA competitivo free-to-play",
+    "precio": 0.0,
+    "img": "../img/league.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 8,
+    "nombre": "Call of Duty: Modern Warfare II",
+    "cantidad": 1,
+    "desc": "FPS moderno con modo campaña y multijugador",
+    "precio": 69.99,
+    "img": "../img/callduty.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 9,
+    "nombre": "FIFA 23",
+    "cantidad": 1,
+    "desc": "Última edición del simulador de fútbol",
+    "precio": 59.99,
+    "img": "../img/fifa.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 10,
+    "nombre": "Fortnite",
+    "cantidad": 1,
+    "desc": "Battle Royale free-to-play",
+    "precio": 0.0,
+    "img": "../img/fornite.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 11,
+    "nombre": "Grand Theft Auto V Premium Edition",
+    "cantidad": 1,
+    "desc": "Incluye GTA Online y todas las actualizaciones",
+    "precio": 29.99,
+    "img": "../img/GTAV.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 12,
+    "nombre": "Minecraft Java & Bedrock Edition",
+    "cantidad": 1,
+    "desc": "Incluye ambas versiones del juego",
+    "precio": 26.95,
+    "img": "../img/Minecraft.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 13,
+    "nombre": "Super Mario Odyssey",
+    "cantidad": 1,
+    "desc": "Aventura plataformera de Nintendo",
+    "precio": 59.99,
+    "img": "../img/poki.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 14,
+    "nombre": "Counter Strike 1.6",
+    "cantidad": 1,
+    "desc": "Clásico FPS que definió el género",
+    "precio": 9.99,
+    "img": "../img/cs1.6.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 15,
+    "nombre": "Counter Strike: Source",
+    "cantidad": 1,
+    "desc": "Mejorado con el motor Source",
+    "precio": 19.99,
+    "img": "../img/cs source.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 16,
+    "nombre": "Counter Strike: Global Offensive",
+    "cantidad": 1,
+    "desc": "FPS táctico multijugador competitivo",
+    "precio": 0.0,
+    "img": "../img/counter strike global offensive.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 17,
+    "nombre": "Dota 2",
+    "cantidad": 1,
+    "desc": "MOBA estratégico free-to-play",
+    "precio": 0.0,
+    "img": "../img/dota2.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 18,
+    "nombre": "World of Warcraft: Dragonflight",
+    "cantidad": 1,
+    "desc": "Expansión más reciente del MMORPG",
+    "precio": 49.99,
+    "img": "../img/world of warcraft.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 19,
+    "nombre": "eFootball PES 2023",
+    "cantidad": 1,
+    "desc": "Simulador de fútbol free-to-play",
+    "precio": 0.0,
+    "img": "../img/pes 2021.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 20,
+    "nombre": "Age of Mythology: Extended Edition",
+    "cantidad": 1,
+    "desc": "Remaster del clásico de estrategia",
+    "precio": 29.99,
+    "img": "../img/mythology.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 21,
+    "nombre": "Age of Empires: Definitive Edition",
+    "cantidad": 1,
+    "desc": "Remaster del primer juego de la saga",
+    "precio": 19.99,
+    "img": "../img/age of empires.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 22,
+    "nombre": "Age of Empires II: Definitive Edition",
+    "cantidad": 1,
+    "desc": "Versión remasterizada con nuevo contenido",
+    "precio": 19.99,
+    "img": "../img/empires2.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 23,
+    "nombre": "Age of Empires III: Definitive Edition",
+    "cantidad": 1,
+    "desc": "Remaster con gráficos mejorados",
+    "precio": 19.99,
+    "img": "../img/age of empires 3.jpg",
+    "existencia": 10
+  },
+  {
+    "id": 24,
+    "nombre": "Age of Empires IV",
+    "cantidad": 1,
+    "desc": "Nueva entrega de la saga de estrategia",
+    "precio": 59.99,
+    "img": "../img/age of empires 4.jpg",
+    "existencia": 10
+  }
+]

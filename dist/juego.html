@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asalto - Juego de Estrategia</title>
+    <link rel="shortcut icon" href="../img/logoBlanco.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/juego.css">
+
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen p-4 font-sans">
+    <div class="container mx-auto max-w-6xl">
+        <!-- Encabezado -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-emerald-500 mb-2">ASALTO</h1>
+            <p class="text-gray-400">Juego de estrategia militar</p>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="flex flex-col lg:flex-row gap-8 items-start">
+            <!-- Área de juego -->
+            <section class="flex-1 bg-gray-800 rounded-lg shadow-xl p-4">
+                <div class="flex justify-center">
+                    <canvas id="canvasJuego_ah_ga" width="560" height="560" 
+                            class="bg-gray-700 rounded-md shadow-md"></canvas>
+                </div>
+            </section>
+
+            <!-- Panel de control -->
+            <aside class="w-full lg:w-72 space-y-6">
+                <!-- Información de turno -->
+                <div class="bg-gray-800 rounded-lg p-4 shadow">
+                    <h2 class="text-xl font-bold text-emerald-500 mb-2">Turno Actual</h2>
+                    <div class="flex items-center">
+                        <div id="turnoIcono_ah_ga" class="w-4 h-4 rounded-full bg-emerald-500 mr-2"></div>
+                        <p id="turnoActual_ah_ga" class="font-medium">Atacantes (Soldados)</p>
+                    </div>
+                </div>
+
+                <!-- Controles del juego -->
+                <div class="bg-gray-800 rounded-lg p-4 shadow">
+                    <h2 class="text-xl font-bold text-emerald-500 mb-2">Controles</h2>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center">
+                            <span class="bg-gray-700 rounded px-2 py-1 mr-2">Click</span>
+                            <span>Seleccionar pieza</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-700 rounded px-2 py-1 mr-2">Click</span>
+                            <span>Mover a casilla</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-700 rounded px-2 py-1 mr-2">Hover</span>
+                            <span>Resaltar piezas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="bg-gray-800 rounded-lg p-4 shadow">
+                    <h2 class="text-xl font-bold text-emerald-500 mb-2">Estadísticas</h2>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div>
+                            <p class="text-gray-400">Soldados:</p>
+                            <p id="contadorSoldados_ah_ga" class="font-bold">24</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Oficiales:</p>
+                            <p id="contadorOficiales_ah_ga" class="font-bold">2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="space-y-3">
+                    <button id="nuevoJuegoBtn_ah_ga" 
+                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold transition-colors">
+                        Nueva Partida
+                    </button>
+                    <button id="botonAyuda_ah_ga" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition-colors flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        Ayuda
+                    </button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>Juego desarrollado por <span class="text-emerald-500">Alan Hidalgo Y Guillermo Alvarez</span> - © 2023</p>
+        </footer>
+    </div>
+<script type="module" src="../js/app.js"></script>
+</body>
+</html>

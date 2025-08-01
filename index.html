@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus AG - Juegos RPG, Roguelike y de Mesa</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./img/logoBlanco80x80.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Header/Navbar -->
+    <header-ahga></header-ahga>
+
+    <!-- Hero Section -->
+    <section
+      id="inicio"
+      class="hero-bg min-h-[50vh] md:min-h-[70vh] flex items-center"
+    >
+      <div class="container mx-auto px-4 sm:px-6 py-8 md:py-16">
+        <div class="max-w-2xl text-center md:text-left">
+          <span
+            class="body-font bg-[#3F7D20] text-sm px-3 py-1 rounded-full inline-block mb-4"
+          >
+            NUEVO LANZAMIENTO
+          </span>
+          <h1
+            class="title-font text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
+          >
+            Asalto al Fuerte
+          </h1>
+          <p
+            class="body-font text-lg md:text-xl text-[#72B01D] max-w-xl mb-8 mx-auto md:mx-0"
+          >
+            Un juego de mesa que redefine la estrategia, con mecánicas
+            innovadoras y narrativa inmersiva. ¡Prepárate para la aventura!
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a
+              href="./dist/landing.html"
+              class="body-font btn-primary px-6 py-2 md:px-8 md:py-3 rounded-full font-bold"
+            >
+              Nuevo Lanzamiento
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Nexus AG Section -->
+    <section class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="title-font text-3xl md:text-4xl font-bold mb-4">
+            ¿Por Qué Nexus AG?
+          </h2>
+          <p class="body-font text-[#F3EFF5] max-w-2xl mx-auto">
+            Somos una empresa de desarrollo de juegos formada por apasionados
+            creadores, especializados en juegos RPG, roguelike y de mesa.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          <div class="text-center p-6 bg-[#454955]/20 rounded-xl">
+            <div
+              class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">50+</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">
+              Juegos Desarrollados
+            </h3>
+            <p class="body-font text-[#F3EFF5]/80">
+              Experiencia en creación de juegos innovadores con alta
+              rejugabilidad.
+            </p>
+          </div>
+
+          <div class="text-center p-6 bg-[#454955]/20 rounded-xl">
+            <div
+              class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">100k+</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">
+              Jugadores Satisfechos
+            </h3>
+            <p class="body-font text-[#F3EFF5]/80">
+              Comunidad global de jugadores que disfrutan de nuestras
+              creaciones.
+            </p>
+          </div>
+
+          <div class="text-center p-6 bg-[#454955]/20 rounded-xl">
+            <div
+              class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">12+</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">
+              Premios Ganados
+            </h3>
+            <p class="body-font text-[#F3EFF5]/80">
+              Reconocidos por nuestra innovación en mecánicas de juego y
+              narrativa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center"
+        >
+          <!-- Left Column - Image -->
+          <div class="relative">
+            <div
+              class="bg-gradient-to-br from-[#72B01D] to-[#3F7D20] w-fit h-full rounded-xl overflow-hidden"
+            >
+              <img
+                src="./img/about-us-team.jpg"
+                alt="Equipo de Nexus AG trabajando en juegos"
+                class="w-full h-64 md:h-[400px] object-cover object-center opacity-70 mix-blend-luminosity"
+              />
+            </div>
+            <div
+              class="absolute -bottom-4 -right-4 bg-[#0D0A0B] border-2 border-[#72B01D] rounded-lg p-4 shadow-lg"
+            >
+              <p class="title-font text-base md:text-lg text-[#72B01D]">
+                Desde 2022 creando experiencias únicas
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column - Content -->
+          <div>
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-6">
+              <span class="text-[#72B01D]">Conoce</span> al equipo detrás de los
+              juegos
+            </h2>
+
+            <p class="body-font text-base md:text-lg mb-6">
+              En <span class="text-[#72B01D] font-semibold">Nexus AG</span>,
+              somos dos apasionados creadores, Alan y Guillermo, unidos por
+              nuestra fascinación por los mundos imaginarios y las mecánicas de
+              juego innovadoras.
+            </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div
+                  class="bg-[#3F7D20] w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <p class="body-font">
+                  Nos especializamos en crear experiencias inmersivas en géneros
+                  como <span class="text-[#72B01D]">RPG</span>,
+                  <span class="text-[#72B01D]">Roguelike</span> y
+                  <span class="text-[#72B01D]">juegos de mesa</span>.
+                </p>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-[#3F7D20] w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <p class="body-font">
+                  Actualmente estamos desarrollando nuestro proyecto estrella:
+                  <span class="text-[#72B01D] font-semibold"
+                    >"Asalto de la Imagen"</span
+                  >, un juego de mesa que redefine la estrategia.
+                </p>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-[#3F7D20] w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <p class="body-font">
+                  Combinamos
+                  <span class="text-[#72B01D]">experiencia técnica</span> con
+                  <span class="text-[#72B01D]">pasión narrativa</span> para
+                  crear mecánicas de juego que desafían y entretienen.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mission and Vision -->
+            <div class="border-l-4 border-[#72B01D] pl-4 py-2 mb-6">
+              <h3 class="title-font text-xl font-semibold mb-2">
+                Nuestra Misión
+              </h3>
+              <p class="body-font">
+                Transformar la experiencia de entretenimiento a través de juegos
+                innovadores que empoderan a los jugadores, automatizan procesos
+                creativos y garantizan experiencias memorables.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-[#72B01D] pl-4 py-2">
+              <h3 class="title-font text-xl font-semibold mb-2">
+                Nuestra Visión
+              </h3>
+              <p class="body-font">
+                Ser la solución preferida para entusiastas de juegos,
+                reconocidos por crear experiencias transformadoras que
+                convierten la eficiencia creativa en crecimiento sostenido.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="mt-12 md:mt-16">
+          <h3 class="title-font text-2xl font-bold text-center mb-8">
+            Nuestros Valores Fundamentales
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="bg-[#454955]/20 p-6 rounded-xl text-center hover:border-[#72B01D] hover:border transition-all"
+            >
+              <div
+                class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+              </div>
+              <h4 class="title-font text-xl font-semibold mb-2">
+                Innovación Constante
+              </h4>
+              <p class="body-font">
+                Buscamos siempre nuevas formas de sorprender a nuestros
+                jugadores con mecánicas únicas y narrativas envolventes.
+              </p>
+            </div>
+
+            <div
+              class="bg-[#454955]/20 p-6 rounded-xl text-center hover:border-[#72B01D] hover:border transition-all"
+            >
+              <div
+                class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <h4 class="title-font text-xl font-semibold mb-2">
+                Comunidad Primero
+              </h4>
+              <p class="body-font">
+                Nuestros jugadores son el corazón de todo lo que hacemos. Sus
+                feedback impulsan nuestras mejoras.
+              </p>
+            </div>
+
+            <div
+              class="bg-[#454955]/20 p-6 rounded-xl text-center hover:border-[#72B01D] hover:border transition-all"
+            >
+              <div
+                class="bg-[#3F7D20] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h4 class="title-font text-xl font-semibold mb-2">
+                Diversión Garantizada
+              </h4>
+              <p class="body-font">
+                Cada juego está diseñado para ofrecer horas de entretenimiento
+                desafiante y experiencias memorables.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Games Genres Section -->
+    <section id="galeria" class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+          <h2 class="title-font text-3xl font-bold mb-4">Géneros de Juegos</h2>
+          <p class="body-font max-w-2xl mx-auto">
+            Explora nuestras categorías de juegos más populares
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 mb-8"
+        >
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer">
+            <img
+              src="./img/section-02-img-01.png"
+              alt="RPG"
+              class="w-full h-20 sm:h-24 md:h-32 lg:h-40 object-cover object-center transform transition-transform duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white text-sm sm:text-base font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              RPG
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer">
+            <img
+              src="./img/section-02-img-02.png"
+              alt="RL"
+              class="w-full h-20 sm:h-24 md:h-32 lg:h-40 object-cover object-center transform transition-transform duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white text-sm sm:text-base font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              Roguelike
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer">
+            <img
+              src="./img/section-02-img-03.png"
+              alt="JM"
+              class="w-full h-20 sm:h-24 md:h-32 lg:h-40 object-cover object-center transform transition-transform duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white text-sm sm:text-base font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              Juegos de Mesa
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer">
+            <img
+              src="./img/section-02-img-04.png"
+              alt="EST"
+              class="w-full h-20 sm:h-24 md:h-32 lg:h-40 object-cover object-center transform transition-transform duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white text-sm sm:text-base font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              Estrategia
+            </div>
+          </div>
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer">
+            <img
+              src="./img/section-02-img-05.png"
+              alt="SBOX"
+              class="w-full h-20 sm:h-24 md:h-32 lg:h-40 object-cover object-center transform transition-transform duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white text-sm sm:text-base font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              SandBox
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a
+            href="./dist/carrito.html"
+            class="body-font btn-secondary inline-block px-6 py-2 md:px-8 md:py-3 rounded-full font-bold"
+          >
+            Ver todos los géneros
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Seller Games -->
+    <section id="juegos" class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-8 md:mb-10"
+        >
+          <h2 class="title-font text-3xl font-bold mb-4 sm:mb-0">
+            Juegos Más Vendidos
+          </h2>
+          <a
+            href="./dist/carrito.html"
+            class="body-font text-[#72B01D] hover:underline"
+          >
+            Ver todos los juegos →
+          </a>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6"
+        >
+          <!-- Game 1 - VALIANT HEARIS -->
+          <div
+            class="game-card bg-[#454955]/20 rounded-xl overflow-hidden relative"
+          >
+            <div class="sale-badge">-35%</div>
+            <div
+              class="game-image"
+              style="background-image: url('./img/valiant-hearts.jpg')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-2xl sm:text-3xl text-white mb-1">
+                  VALIANT
+                </h3>
+                <h3 class="title-font text-2xl sm:text-3xl text-white">
+                  HEARIS
+                </h3>
+                <p class="title-font text-white mt-2 text-sm sm:text-base">
+                  - THE GREAT WAR -
+                </p>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                VAliant Hearis: The Great War
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Estrategia épica con batallas históricas y narrativa profunda.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$29.99</span>
+                <span
+                  class="body-font text-xs sm:text-sm line-through text-[#F3EFF5]/60"
+                  >$45.99</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 2 - ASPHALT LEGENDS -->
+          <div class="game-card bg-[#454955]/20 rounded-xl overflow-hidden">
+            <div
+              class="game-image"
+              style="background-image: url('./img/asphalt9.png')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-3xl sm:text-4xl text-white">
+                  ASPHALT
+                </h3>
+                <h3 class="title-font text-3xl sm:text-4xl text-white">
+                  LEGENDS
+                </h3>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Asphalt 9: Legends
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Carreras de alta velocidad con los autos más exóticos.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$19.99</span>
+                <span
+                  class="body-font text-xs sm:text-sm line-through text-[#F3EFF5]/60"
+                  >$29.99</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 3 - THE WITCHER -->
+          <div
+            class="game-card bg-[#454955]/20 rounded-xl overflow-hidden relative"
+          >
+            <div class="sale-badge">-15%</div>
+            <div
+              class="game-image"
+              style="background-image: url('./img/witcher3.jpg')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-3xl sm:text-4xl text-white">THE</h3>
+                <h3 class="title-font text-3xl sm:text-4xl text-white">
+                  WITCHER
+                </h3>
+                <h3 class="title-font text-xl sm:text-2xl text-white mt-2">
+                  WILD HUNT
+                </h3>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                The Witcher 3: Wild Hunt
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                RPG de mundo abierto con narrativa galardonada.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$24.99</span>
+                <span
+                  class="body-font text-xs sm:text-sm line-through text-[#F3EFF5]/60"
+                  >$39.99</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 4 - ROBLOX -->
+          <div class="game-card bg-[#454955]/20 rounded-xl overflow-hidden">
+            <div
+              class="game-image"
+              style="background-image: url('./img/roblox.jpg')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-3xl sm:text-4xl text-white">
+                  ROBLOX
+                </h3>
+                <p class="title-font text-white mt-2 text-sm sm:text-base">
+                  Sophomore.com
+                </p>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Roblox: Sophomore Edition
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Crea y explora mundos infinitos con esta edición especial.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg text-[#72B01D]"
+                  >Gratis</span
+                >
+              </div>
+              <button
+                class="body-font btn-secondary w-full mt-4 py-2 rounded-lg text-sm"
+              >
+                Descargar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Games - Actualizada con botones -->
+    <section class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-8 md:mb-10"
+        >
+          <h2 class="title-font text-3xl font-bold mb-4 sm:mb-0">
+            Juegos Populares
+          </h2>
+          <a
+            href="./dist/carrito.html"
+            class="body-font text-[#72B01D] hover:underline"
+          >
+            Explorar más →
+          </a>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6"
+        >
+          <!-- Game 1 - CITIES SKYLINES -->
+          <div class="game-card bg-[#454955]/20 rounded-xl overflow-hidden">
+            <div
+              class="game-image"
+              style="background-image: url('./img/cities.jpg')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-2xl sm:text-3xl text-white">
+                  CITIES
+                </h3>
+                <h3 class="title-font text-2xl sm:text-3xl text-white">
+                  SKYLINES
+                </h3>
+                <p class="title-font text-white mt-2 text-sm sm:text-base">
+                  XBOX ONE EDITION
+                </p>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Cities: Skylines
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Construye y gestiona tu propia metrópolis con detalle increíble.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$59.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 2 - CALL OF DUTY -->
+          <div
+            class="game-card bg-[#454955]/20 rounded-xl overflow-hidden relative"
+          >
+            <div class="sale-badge">-25%</div>
+            <div
+              class="game-image"
+              style="background-image: url('./img/cod.jpg')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-2xl sm:text-3xl text-white">
+                  CALL OF
+                </h3>
+                <h3 class="title-font text-2xl sm:text-3xl text-white">DUTY</h3>
+                <h3 class="title-font text-lg sm:text-xl text-white mt-2">
+                  MODERN WARFARE II
+                </h3>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Call of Duty: Modern Warfare II
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Acción militar de primera persona con multijugador intenso.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$49.99</span>
+                <span
+                  class="body-font text-xs sm:text-sm line-through text-[#F3EFF5]/60"
+                  >$69.99</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 3 - MINECRAFT -->
+          <div class="game-card bg-[#454955]/20 rounded-xl overflow-hidden">
+            <div
+              class="game-image"
+              style="background-image: url('./img/mine.png')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-3xl sm:text-4xl text-white">
+                  MINECRAFT
+                </h3>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Minecraft
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Explora, construye y sobrevive en un mundo infinito de bloques.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$26.00</span>
+                <span
+                  class="body-font text-xs sm:text-sm line-through text-[#F3EFF5]/60"
+                  >$36.00</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 4 - SURVIVING MARS -->
+          <div class="game-card bg-[#454955]/20 rounded-xl overflow-hidden">
+            <div
+              class="game-image"
+              style="background-image: url('./img/mars.png')"
+            >
+              <div class="text-center">
+                <h3 class="title-font text-2xl sm:text-3xl text-white">
+                  SURVIVING
+                </h3>
+                <h3 class="title-font text-2xl sm:text-3xl text-white">MARS</h3>
+              </div>
+              <div class="game-overlay">
+                <a
+                  href="./dist/carrito.html"
+                  class="btn-primary px-4 py-1 sm:px-6 sm:py-2 rounded-full"
+                >
+                  Ver detalles
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="title-font text-base sm:text-lg font-semibold mb-2">
+                Surviving Mars
+              </h3>
+              <p class="body-font text-xs sm:text-sm text-[#F3EFF5]/80 mb-4">
+                Coloniza el planeta rojo y sobrevive a sus desafíos.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="title-font text-base sm:text-lg">$44.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="py-12 md:py-16">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 md:mb-12">
+          <h2 class="title-font text-3xl md:text-4xl font-bold mb-4">
+            Próximos Lanzamientos
+          </h2>
+          <p class="body-font max-w-2xl mx-auto text-light-gray">
+            Descubre nuestras próximas aventuras que están por llegar
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          <!-- Tarjeta 1 -->
+          <div
+            class="game-card bg-dark-gray rounded-xl overflow-hidden hover:bg-medium-gray"
+          >
+            <div class="p-6 md:p-8">
+              <span
+                class="body-font bg-accent text-sm px-3 py-1 rounded-full inline-block mb-4"
+              >
+                EN DESARROLLO
+              </span>
+              <h3 class="title-font text-2xl font-bold mb-4">
+                Ecos del Abismo
+              </h3>
+              <p class="body-font mb-6 text-gray-300">
+                Un RPG submarino con combate táctico y exploración de ruinas
+                ancestrales. Sumérgete en un mundo donde cada decisión afecta el
+                ecosistema.
+              </p>
+              <div class="flex items-center mb-6">
+                <div class="w-full bg-light-gray rounded-full h-2.5">
+                  <div
+                    class="bg-accent h-2.5 rounded-full"
+                    style="width: 65%"
+                  ></div>
+                </div>
+                <span class="body-font ml-4">65%</span>
+              </div>
+              <button
+                class="body-font w-full py-3 rounded-lg bg-gray-700 hover:bg-lime-600 transition duration-300"
+              >
+                Lista de espera
+              </button>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div
+            class="game-card bg-dark-gray rounded-xl overflow-hidden hover:bg-medium-gray"
+          >
+            <div class="p-6 md:p-8">
+              <span
+                class="body-font bg-accent text-sm px-3 py-1 rounded-full inline-block mb-4"
+              >
+                PRÓXIMAMENTE
+              </span>
+              <h3 class="title-font text-2xl font-bold mb-4">
+                Crónicas del Crepúsculo
+              </h3>
+              <p class="body-font mb-6 text-gray-300">
+                Un roguelike de cartas con combates rápidos y más de 200 cartas
+                únicas. Construye tu mazo mientras exploras un mundo en
+                constante cambio.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <div class="flex items-center text-accent">
+                  <svg
+                    class="w-5 h-5 mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                    <path
+                      fill-rule="evenodd"
+                      d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>Beta disponible</span>
+                </div>
+                <div class="flex items-center text-accent">
+                  <svg
+                    class="w-5 h-5 mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>Q4 2025</span>
+                </div>
+              </div>
+              <button
+                class="body-font w-full py-3 rounded-lg bg-gray-700 hover:bg-lime-600 transition duration-300"
+              >
+                Acceso anticipado
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contacto" class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div
+          class="max-w-lg mx-auto bg-[#1a1a1a] rounded-xl shadow-lg p-6 md:p-8"
+        >
+          <h2
+            class="title-font text-2xl md:text-3xl font-bold text-center text-[#72B01D] mb-6"
+          >
+            Contáctanos
+          </h2>
+          <p class="body-font text-[#F3EFF5]/80 text-center mb-6 md:mb-8">
+            ¿Tienes dudas, sugerencias o quieres colaborar con Nexus AG?
+            Completa el formulario y nos pondremos en contacto contigo lo antes
+            posible.
+          </p>
+          <form id="contact-form" class="space-y-4 md:space-y-5">
+            <div>
+              <label
+                for="nombre"
+                class="block text-sm font-medium text-[#72B01D] mb-1"
+              >
+                Nombre y Apellido
+              </label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                required
+                class="w-full border border-[#72B01D]/40 bg-[#232323] text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#72B01D]"
+                placeholder="Ejemplo: Juan Pérez"
+              />
+            </div>
+            <div>
+              <label
+                for="remitente"
+                class="block text-sm font-medium text-[#72B01D] mb-1"
+              >
+                Tu Gmail
+              </label>
+              <input
+                type="email"
+                name="remitente"
+                id="remitente"
+                required
+                pattern=".+@gmail\.com"
+                class="w-full border border-[#72B01D]/40 bg-[#232323] text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#72B01D]"
+                placeholder="ejemplo@gmail.com"
+              />
+            </div>
+            <div>
+              <label
+                for="asunto"
+                class="block text-sm font-medium text-[#72B01D] mb-1"
+              >
+                Asunto
+              </label>
+              <input
+                type="text"
+                name="asunto"
+                id="asunto"
+                required
+                class="w-full border border-[#72B01D]/40 bg-[#232323] text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#72B01D]"
+                placeholder="¿Sobre qué quieres hablar?"
+              />
+            </div>
+            <div>
+              <label
+                for="contenido"
+                class="block text-sm font-medium text-[#72B01D] mb-1"
+              >
+                Mensaje
+              </label>
+              <textarea
+                name="contenido"
+                id="contenido"
+                rows="4"
+                required
+                class="w-full border border-[#72B01D]/40 bg-[#232323] text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#72B01D]"
+                placeholder="Escribe tu mensaje aquí..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-[#72B01D] hover:bg-[#3F7D20] text-white font-semibold px-4 py-2 rounded-lg shadow transition"
+            >
+              Enviar mensaje
+            </button>
+            <div id="form-status" class="mt-4 text-center"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section
+      id="testimonios"
+      class="py-12 md:py-16 bg-[#0D0A0B] dark:bg-dark-800"
+    >
+      <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+        <div class="text-center mb-10 md:mb-12">
+          <h2
+            class="font-inter text-3xl md:text-4xl font-bold mb-4 text-primary"
+          >
+            Lo que dicen nuestros clientes
+          </h2>
+          <p class="text-secondary max-w-2xl mx-auto">
+            Testimonios reales de empresas que han mejorado su gestión con
+            Baldox
+          </p>
+        </div>
+        <div
+          id="testimonios-contenedor"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+        >
+          <!-- Aquí se insertarán los testimonios -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipo de Trabajo -->
+    <section class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 md:mb-12">
+          <h2 class="title-font text-3xl font-bold mb-2 text-[#72B01D]">
+            Nuestro Equipo
+          </h2>
+          <p class="body-font max-w-2xl mx-auto text-[#F3EFF5]/80">
+            Conoce a las personas detrás de Nexus AG. Apasionados por los
+            juegos, la creatividad y la innovación.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <!-- Integrante 1 -->
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl flex flex-col items-center"
+          >
+            <img
+              class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-4 border-[#72B01D]"
+              src="./img/equipo-alan.png"
+              alt="Alan Hidalgo"
+            />
+            <h4
+              class="title-font text-lg md:text-xl font-semibold mb-1 text-[#72B01D]"
+            >
+              Alan Hidalgo
+            </h4>
+            <p class="body-font text-[#F3EFF5]/80 mb-2 text-sm md:text-base">
+              Co-Fundador &amp; Game Designer
+            </p>
+            <p
+              class="body-font text-center text-[#F3EFF5]/70 text-sm md:text-base"
+            >
+              Especialista en mecánicas de juego, narrativa y experiencia de
+              usuario. Apasionado por crear mundos únicos y desafiantes.
+            </p>
+          </div>
+          <!-- Integrante 2 -->
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl flex flex-col items-center"
+          >
+            <img
+              class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-4 border-[#72B01D]"
+              src="./img/equipo-guillermo.png"
+              alt="Guillermo Andrade"
+            />
+            <h4
+              class="title-font text-lg md:text-xl font-semibold mb-1 text-[#72B01D]"
+            >
+              Guillermo Alvarez
+            </h4>
+            <p class="body-font text-[#F3EFF5]/80 mb-2 text-sm md:text-base">
+              Co-Fundador &amp; Lead Developer
+            </p>
+            <p
+              class="body-font text-center text-[#F3EFF5]/70 text-sm md:text-base"
+            >
+              Encargado del desarrollo técnico, IA y optimización. Siempre
+              buscando nuevas formas de innovar en el mundo de los juegos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Geolocalización / Mapa -->
+    <section class="py-12 md:py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-6 md:mb-8">
+          <h2 class="title-font text-3xl font-bold mb-2 text-[#72B01D]">
+            Nuestra Ubicación
+          </h2>
+          <p class="body-font max-w-2xl mx-auto text-[#F3EFF5]/80">
+            Encuéntranos en el mapa o visítanos en nuestra oficina virtual.
+          </p>
+        </div>
+        <div
+          id="map"
+          class="w-full h-64 sm:h-80 md:h-[400px] lg:h-[500px] rounded-2xl shadow-xl z-0"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer-ahga></footer-ahga>
+    <script type="module" src="./js/index.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </body>
+</html>

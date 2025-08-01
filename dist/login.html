@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus AG - Acceso</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../firebase/ui/auth-ui.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4">
+    <div class="form-container w-full max-w-6xl rounded-2xl overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2 min-h-[700px]">
+        <!-- Panel izquierdo: Imagen y marca -->
+        <div
+          class="hidden md:flex flex-col justify-between p-10 bg-gradient-to-br from-[#0D0A0B] to-[#3F7D20]/20"
+        >
+          <div>
+            <div class="flex items-center mb-10">
+              <div class="bg-[#72B01D] w-10 h-10 rounded-lg mr-3"></div>
+              <h1 class="title-font text-2xl text-[#72B01D]">NEXUS AG</h1>
+            </div>
+
+            <h2 class="title-font text-3xl font-bold mb-4">
+              Bienvenido a Nexus AG
+            </h2>
+            <p class="mb-6">
+              Accede a tu cuenta para gestionar tus juegos, participar en
+              comunidades y disfrutar de contenido exclusivo.
+            </p>
+
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <p>Acceso a todos tus juegos</p>
+            </div>
+
+            <div class="flex items-center space-x-3 mt-4">
+              <div
+                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                  />
+                </svg>
+              </div>
+              <p>Comunidad de jugadores</p>
+            </div>
+
+            <div class="flex items-center space-x-3 mt-4">
+              <div
+                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <p>Soporte técnico prioritario</p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
+              >
+                <span class="sr-only">Instagram</span>IG
+              </a>
+              <a
+                href="#"
+                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
+              >
+                <span class="sr-only">YouTube</span>YT
+              </a>
+              <a
+                href="#"
+                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
+              >
+                <span class="sr-only">Twitter</span>TW
+              </a>
+            </div>
+            <p class="mt-4 text-sm text-gray-400">
+              &copy; 2023 Nexus AG. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+
+        <!-- Panel derecho: Formularios -->
+        <div class="bg-[#1b1a1b] p-10 md:p-12 flex flex-col justify-center">
+          <!-- Formulario de Login (activo por defecto) -->
+          <div id="loginForm">
+            <h2 class="title-font text-3xl font-bold mb-2">Inicia Sesión</h2>
+            <p class="text-gray-400 mb-8">Accede a tu cuenta de Nexus AG</p>
+
+            <!-- Username en el login -->
+            <div>
+              <label
+                for="loginUsername"
+                class="block text-sm font-medium text-white mb-2"
+              >
+                Nombre de usuario
+              </label>
+              <input
+                type="text"
+                id="loginUsername"
+                class="form-input w-full px-4 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#72B01D]"
+                placeholder="Tu nombre de usuario"
+                required
+              />
+            </div>
+
+            <form class="space-y-6">
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2"
+                  >Correo electrónico</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="form-input w-full px-4 py-3 rounded-lg"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <label for="password" class="block text-sm font-medium"
+                    >Contraseña</label
+                  >
+                  <a href="#" class="text-sm text-[#72B01D] hover:underline"
+                    >¿Olvidaste tu contraseña?</a
+                  >
+                </div>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-input w-full px-4 py-3 rounded-lg"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  class="h-4 w-4 text-[#72B01D] focus:ring-[#72B01D] border-gray-600 rounded bg-[#25262b]"
+                />
+                <label for="remember" class="ml-2 block text-sm text-gray-300">
+                  Recuérdame
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="btn-primary w-full py-3 rounded-lg font-bold"
+              >
+                Iniciar Sesión
+              </button>
+
+              <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full border-t border-gray-700"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                  <span class="px-2 bg-[#0D0A0B] text-gray-400"
+                    >O continúa con</span
+                  >
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <button
+                  type="button"
+                  class="social-btn flex items-center justify-center py-2.5 rounded-lg"
+                >
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 17.292c-2.293 0-3.542-1.007-4.042-2.938h.063c.583 0 1.156-.052 1.719-.156.542.01 1.08.052 1.615.125.459.073.925.109 1.396.109.323 0 .609-.01.854-.031.188-.021.391-.031.609-.031.833 0 1.412.365 1.735 1.094.188.438.292.943.313 1.516.01.156.01.323.01.49 0 .417-.052.776-.156 1.078-.156.469-.469.844-.938 1.125-.458.271-1.042.406-1.75.406-.802 0-1.447-.125-1.938-.375s-.865-.594-1.125-1.031c-.271-.438-.406-.948-.406-1.531 0-.417.062-.813.188-1.188.125-.375.302-.708.531-1 .229-.292.5-.542.813-.75.302-.208.656-.375 1.063-.5.406-.125.844-.219 1.313-.281.458-.063.948-.104 1.469-.125.51-.021 1.021-.031 1.531-.031v-.938c0-.313-.01-.615-.031-.906-.021-.292-.073-.552-.156-.781-.104-.271-.26-.49-.469-.656-.208-.177-.479-.26-.812-.26-.271 0-.51.052-.719.156-.208.104-.375.24-.5.406-.125.167-.229.365-.313.594-.083.229-.146.49-.188.781l-1.344-.188c.063-.5.177-.927.344-1.281.167-.365.385-.677.656-.938.271-.26.594-.458.969-.594.385-.135.812-.198 1.281-.198.771 0 1.365.156 1.781.469.417.313.708.74.875 1.281.167.542.25 1.156.25 1.844v3.438c0 .417.021.823.063 1.219.042.396.104.781.188 1.156h-1.438c-.083-.333-.146-.677-.188-1.031-.031-.354-.052-.698-.052-1.031 0-.375-.021-.729-.063-1.063-.041-.333-.114-.615-.219-.844-.146-.333-.375-.594-.688-.781-.312-.188-.729-.281-1.25-.281-.271 0-.531.031-.781.094s-.458.156-.635.281c-.177.125-.323.281-.438.469-.115.188-.198.417-.25.688z"
+                    />
+                  </svg>
+                  Google
+                </button>
+
+                <button
+                  type="button"
+                  class="social-btn flex items-center justify-center py-2.5 rounded-lg"
+                >
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"
+                    />
+                  </svg>
+                  Facebook
+                </button>
+              </div>
+            </form>
+
+            <p class="mt-8 text-center text-gray-400">
+              ¿No tienes cuenta?
+              <a
+                href="#"
+                id="showRegister"
+                class="switch-form text-[#72B01D] font-medium"
+                >Regístrate ahora</a
+              >
+            </p>
+          </div>
+
+          <!-- Formulario de Registro (oculto inicialmente) - VERSIÓN AMPLIADA -->
+          <div id="registerForm" class="hidden">
+            <h2 class="title-font text-3xl font-bold mb-4">Crea tu cuenta</h2>
+            <p class="text-gray-400 mb-8 text-lg">
+              Únete a la comunidad de Nexus AG
+            </p>
+
+            <form class="space-y-6">
+              <!-- Primera fila: 2 campos grandes -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="firstName"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Nombre</label
+                  >
+                  <input
+                    type="text"
+                    id="firstName"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="Ingresa tu nombre completo"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="lastName"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Apellido</label
+                  >
+                  <input
+                    type="text"
+                    id="lastName"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="Ingresa tus apellidos completos"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Segunda fila: 2 campos grandes -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="username"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Nombre de usuario</label
+                  >
+                  <input
+                    type="text"
+                    id="username"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="Ejemplo: nexus_warrior_2023"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="regEmail"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    id="regEmail"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="tu.correo.personal@dominio.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Tercera fila: 2 campos grandes -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="birthDate"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Fecha de nacimiento</label
+                  >
+                  <input
+                    type="date"
+                    id="birthDate"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white mb-2"
+                    >Cédula de identidad</label
+                  >
+                  <div class="flex gap-3">
+                    <select
+                      id="tipoCedula"
+                      class="form-select px-4 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white w-1/5"
+                      required
+                    >
+                      <option value="V">V</option>
+                      <option value="E">E</option>
+                      <option value="J">J</option>
+                    </select>
+                    <input
+                      type="text"
+                      id="numeroCedula"
+                      class="form-input px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white w-4/5"
+                      placeholder="Número de cédula (ej: 12345678)"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cuarta fila: 2 campos grandes -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-white mb-2"
+                    >Número de teléfono</label
+                  >
+                  <div class="flex gap-3">
+                    <select
+                      id="codigoTelefono"
+                      class="form-select px-4 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white w-1/4"
+                      required
+                    >
+                      <option value="0412">0412</option>
+                      <option value="0414">0414</option>
+                      <option value="0424">0424</option>
+                    </select>
+                    <input
+                      type="tel"
+                      id="numeroTelefono"
+                      class="form-input px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white w-3/4"
+                      placeholder="Número de teléfono (7 dígitos)"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="codigoPostal"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Código Postal</label
+                  >
+                  <select
+                    id="codigoPostal"
+                    class="form-select w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    required
+                  >
+                    <option value="">Seleccione su código postal</option>
+                    <option value="1010">
+                      1010 - Caracas (Distrito Capital)
+                    </option>
+                    <option value="2001">2001 - Valencia (Carabobo)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Quinta fila: Dirección (full width) -->
+              <div>
+                <label
+                  for="direccion"
+                  class="block text-sm font-medium text-white mb-2"
+                  >Dirección completa</label
+                >
+                <textarea
+                  id="direccion"
+                  rows="3"
+                  class="form-textarea w-full px-5 py-3 rounded-lg resize-none bg-[#25262b] border border-gray-700 text-white text-base"
+                  placeholder="Ejemplo: Avenida Principal con Calle Secundaria, Edificio Torre Azul, Piso 7, Apartamento 702, Urbanización Los Jardines, Municipio Libertador"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Sexta fila: Contraseñas -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="regPassword"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="regPassword"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="Crea una contraseña segura (mínimo 8 caracteres)"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="confirmPassword"
+                    class="block text-sm font-medium text-white mb-2"
+                    >Confirmar contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                    placeholder="Repite la misma contraseña para verificación"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Checkboxes con más espacio -->
+              <div class="space-y-4 pt-4">
+                <div class="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    class="h-5 w-5 mt-1 text-[#72B01D] focus:ring-[#72B01D] border-gray-600 rounded bg-[#25262b]"
+                    required
+                  />
+                  <label for="terms" class="ml-3 block text-base text-gray-300">
+                    Acepto los
+                    <a href="#" class="text-[#72B01D] hover:underline"
+                      >términos y condiciones</a
+                    >
+                    y la
+                    <a href="#" class="text-[#72B01D] hover:underline"
+                      >política de privacidad</a
+                    >
+                    de Nexus AG
+                  </label>
+                </div>
+                <div class="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    class="h-5 w-5 mt-1 text-[#72B01D] focus:ring-[#72B01D] border-gray-600 rounded bg-[#25262b]"
+                  />
+                  <label
+                    for="newsletter"
+                    class="ml-3 block text-base text-gray-300"
+                  >
+                    Deseo recibir noticias, actualizaciones y ofertas exclusivas
+                    de Nexus AG por correo electrónico
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn-primary w-full py-4 rounded-lg font-bold text-lg mt-6"
+              >
+                Crear Cuenta
+              </button>
+            </form>
+
+            <p class="mt-8 text-center text-gray-400 text-base">
+              ¿Ya tienes cuenta?
+              <a
+                href="#"
+                id="showLogin"
+                class="switch-form text-[#72B01D] font-medium hover:underline"
+                >Inicia sesión aquí</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Éxito en Login -->
+    <div
+      id="modal-login-success"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#72B01D]"
+      >
+        <div class="p-4 border-b border-[#454955]">
+          <h3 class="text-xl font-bold text-[#72B01D]">¡Sesión iniciada!</h3>
+        </div>
+        <div class="p-4">
+          <p class="mb-4">Has iniciado sesión correctamente.</p>
+          <div class="flex justify-end">
+            <button
+              id="cerrar-login-success"
+              class="bg-[#72B01D] hover:bg-[#3F7D20] text-white px-4 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Error en Login -->
+    <div
+      id="modal-login-error"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#FF3B30]"
+      >
+        <div class="p-4 border-b border-[#454955]">
+          <h3 class="text-xl font-bold text-[#FF3B30]">
+            Error al iniciar sesión
+          </h3>
+        </div>
+        <div class="p-4">
+          <p id="login-error-message" class="mb-4"></p>
+          <div class="flex justify-end">
+            <button
+              id="cerrar-login-error"
+              class="bg-[#FF3B30] hover:bg-[#D70015] text-white px-4 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Éxito en Registro -->
+    <div
+      id="modal-register-success"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#72B01D]"
+      >
+        <div class="p-4 border-b border-[#454955]">
+          <h3 class="text-xl font-bold text-[#72B01D]">¡Registro exitoso!</h3>
+        </div>
+        <div class="p-4">
+          <p class="mb-4">
+            Tu cuenta ha sido creada correctamente. Ahora puedes iniciar sesión.
+          </p>
+          <div class="flex justify-end">
+            <button
+              id="cerrar-register-success"
+              class="bg-[#72B01D] hover:bg-[#3F7D20] text-white px-4 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Error en Registro -->
+    <div
+      id="modal-register-error"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#FF3B30]"
+      >
+        <div class="p-4 border-b border-[#454955]">
+          <h3 class="text-xl font-bold text-[#FF3B30]">Error en el registro</h3>
+        </div>
+        <div class="p-4">
+          <p id="register-error-message" class="mb-4"></p>
+          <div class="flex justify-end">
+            <button
+              id="cerrar-register-error"
+              class="bg-[#FF3B30] hover:bg-[#D70015] text-white px-4 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Validación -->
+    <div
+      id="modal-validation-error"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#FF9500]"
+      >
+        <div class="p-4 border-b border-[#454955]">
+          <h3 class="text-xl font-bold text-[#FF9500]">Validación requerida</h3>
+        </div>
+        <div class="p-4">
+          <p id="validation-error-message" class="mb-4"></p>
+          <div class="flex justify-end">
+            <button
+              id="cerrar-validation-error"
+              class="bg-[#FF9500] hover:bg-[#FF7B00] text-white px-4 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../firebase/ui/auth-ui.js"></script>
+  </body>
+</html>

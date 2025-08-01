@@ -1,0 +1,163 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #0d0a0b;
+  color: #f3eff5;
+  scroll-behavior: smooth;
+}
+.title-font {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.body-font {
+  font-family: "Verdana", sans-serif;
+}
+.hero-bg {
+  background: linear-gradient(to right, #0d0a0b 30%, rgba(13, 10, 11, 0.8)),
+    url("https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+      center/cover;
+}
+.game-card {
+  background-color: #25262b;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(114, 176, 29, 0.3);
+}
+.genre-card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+.genre-card:hover {
+  border-color: #72b01d;
+  transform: scale(1.05);
+}
+.testimonial-card {
+  border: 1px solid #454955;
+  transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+  border-color: #72b01d;
+  transform: scale(1.02);
+}
+.btn-primary {
+  background-color: #72b01d;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #3f7d20;
+  transform: scale(1.05);
+}
+.btn-secondary {
+  border: 2px solid #72b01d;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: rgba(114, 176, 29, 0.1);
+}
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #3f7d20;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.game-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(13, 10, 11, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.game-card:hover .game-overlay {
+  opacity: 1;
+}
+.coming-soon-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(13, 10, 11, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+/* LOGIN */
+.form-card {
+  background-color: #1a1b1f;
+  border: 1px solid #454955;
+  transition: all 0.3s ease;
+}
+.form-card:hover {
+  border-color: #72b01d;
+  box-shadow: 0 10px 25px rgba(114, 176, 29, 0.2);
+}
+.form-input {
+  background-color: #25262b;
+  border: 1px solid #454955;
+  color: #f3eff5;
+  transition: all 0.3s ease;
+}
+.form-input:focus {
+  border-color: #72b01d;
+  box-shadow: 0 0 0 3px rgba(114, 176, 29, 0.3);
+}
+.form-input:hover {
+  border-color: #72b01d;
+}
+.switch-form {
+  transition: all 0.3s ease;
+}
+.switch-form:hover {
+  color: #72b01d;
+  text-decoration: underline;
+}
+.social-btn {
+  background-color: #25262b;
+  border: 1px solid #454955;
+  transition: all 0.3s ease;
+}
+.social-btn:hover {
+  background-color: #1a1b1f;
+  border-color: #72b01d;
+}
+.form-container {
+  background: linear-gradient(rgba(13, 10, 11, 0.9), rgba(13, 10, 11, 0.7)),
+    url("https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+      center/cover;
+}
+

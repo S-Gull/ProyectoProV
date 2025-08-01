@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asalto - Juego de Estrategia</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="../img/logo80x80.png" type="image/x-icon" />
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <!-- Header/Navbar -->
+    <header-ahga
+      base_AHGA="../.."
+      opciones_AHGA='{
+  "loginHref_AHGA": "../dist/login.html"
+}'
+    ></header-ahga>
+
+    <!-- Hero Section -->
+    <section
+      id="inicio"
+      class="hero-bg min-h-[70vh] flex items-center relative overflow-hidden"
+    >
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute inset-0 bg-[url('../img/banner.jpg')] bg-center bg-no-repeat bg-cover mix-blend-overlay"
+        ></div>
+      </div>
+      <div class="container mx-auto px-4 py-16 relative z-10">
+        <div class="max-w-2xl">
+          <span
+            class="body-font bg-[#72B01D] text-sm px-3 py-1 rounded-full inline-block mb-4"
+          >
+            NUEVO LANZAMIENTO
+          </span>
+          <h1 class="title-font text-5xl md:text-7xl font-bold mb-6">Asalto</h1>
+          <p class="body-font text-xl text-[#72B01D] max-w-xl mb-8">
+            Un juego de mesa que redefine la estrategia, con mecánicas
+            innovadoras y narrativa inmersiva. ¡Prepárate para la aventura!
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="./juego.html"
+              class="body-font btn-primary px-8 py-3 rounded-full font-bold"
+            >
+              Jugar Ahora
+            </a>
+            <a
+              href="#reglas"
+              class="body-font btn-secondary px-8 py-3 rounded-full font-bold scroll-smooth bg-gray-900 text-gray-100"
+            >
+              Aprender Reglas
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Game Section -->
+    <section id="sobre-el-juego" class="py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="title-font text-4xl font-bold mb-4">Sobre el Juego</h2>
+          <p class="body-font text-gray-300 max-w-2xl mx-auto">
+            "Asalto" es un intenso juego de estrategia para dos jugadores donde
+            las fuerzas atacantes intentan tomar una fortaleza defendida por un
+            pequeño grupo de oficiales.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="text-center p-6 bg-[#454955]/20 rounded-xl border border-[#72B01D]/20 hover:border-[#72B01D]/50 transition-colors"
+          >
+            <div
+              class="bg-[#72B01D] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">2</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">Jugadores</h3>
+            <p class="body-font text-gray-300">
+              Un jugador controla 24 soldados (atacantes) y el otro controla 2
+              oficiales (defensores).
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-[#454955]/20 rounded-xl border border-[#72B01D]/20 hover:border-[#72B01D]/50 transition-colors"
+          >
+            <div
+              class="bg-[#72B01D] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">9</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">Posiciones</h3>
+            <p class="body-font text-gray-300">
+              Tablero con 9 posiciones estratégicas que forman la fortaleza a
+              defender o conquistar.
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-[#454955]/20 rounded-xl border border-[#72B01D]/20 hover:border-[#72B01D]/50 transition-colors"
+          >
+            <div
+              class="bg-[#72B01D] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="title-font text-2xl">∞</span>
+            </div>
+            <h3 class="title-font text-xl font-semibold mb-3">Estrategias</h3>
+            <p class="body-font text-gray-300">
+              Múltiples enfoques tácticos posibles para ambos bandos, cada
+              partida es única.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Features -->
+    <section class="py-16 bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1">
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-6">
+              <span class="text-[#72B01D]">Características</span> Únicas
+            </h2>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="bg-[#72B01D] w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <div>
+                  <h3 class="title-font text-xl font-semibold mb-2">
+                    Mecánicas Innovadoras
+                  </h3>
+                  <p class="body-font text-gray-300">
+                    Sistema de movimiento asimétrico donde los soldados avanzan
+                    hacia la fortaleza mientras los oficiales pueden moverse
+                    libremente y capturar mediante saltos.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-[#72B01D] w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <div>
+                  <h3 class="title-font text-xl font-semibold mb-2">
+                    Capturas Obligatorias
+                  </h3>
+                  <p class="body-font text-gray-300">
+                    Los oficiales deben capturar soldados cuando tienen la
+                    oportunidad, añadiendo una capa estratégica adicional al
+                    juego.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-[#72B01D] w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
+                  <span class="title-font">✓</span>
+                </div>
+                <div>
+                  <h3 class="title-font text-xl font-semibold mb-2">
+                    Doble Condición de Victoria
+                  </h3>
+                  <p class="body-font text-gray-300">
+                    Los atacantes pueden ganar ocupando la fortaleza o
+                    capturando a ambos oficiales, mientras los defensores deben
+                    impedirlo eliminando suficientes soldados.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 md:order-2 flex justify-center">
+            <div class="relative">
+              <div
+                class="bg-gradient-to-br from-[#72B01D] to-[#3F7D20] w-full h-full rounded-xl overflow-hidden p-1"
+              >
+                <img
+                  src="../img/defensores.png"
+                  alt="Tablero de Asalto"
+                  class="w-full h-auto object-cover rounded-lg"
+                />
+              </div>
+              <div
+                class="absolute -bottom-4 -right-4 bg-[#0D0A0B] border-2 border-[#72B01D] rounded-lg p-4 shadow-lg"
+              >
+                <p class="title-font text-lg text-[#72B01D]">
+                  Edición Coleccionista Disponible
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Rules -->
+    <section id="reglas" class="py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="title-font text-3xl font-bold mb-4">Reglas del Juego</h2>
+          <p class="body-font text-gray-300 max-w-2xl mx-auto">
+            Domina las mecánicas únicas de "Asalto"
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl border-l-4 border-[#72B01D]"
+          >
+            <h3 class="title-font text-xl font-semibold mb-4 text-[#72B01D]">
+              Movimiento de Soldados
+            </h3>
+            <ul class="space-y-3 body-font text-gray-300">
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>1 casilla por turno hacia la fortaleza</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>Deben avanzar siempre hacia la fortaleza</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span
+                  >Dentro de la fortaleza pueden moverse en cualquier
+                  dirección</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl border-l-4 border-[#72B01D]"
+          >
+            <h3 class="title-font text-xl font-semibold mb-4 text-[#72B01D]">
+              Movimiento de Oficiales
+            </h3>
+            <ul class="space-y-3 body-font text-gray-300">
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>1 casilla en cualquier dirección por turno</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span
+                  >Pueden saltar sobre soldados adyacentes si hay espacio vacío
+                  detrás</span
+                >
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>Pueden realizar múltiples saltos en un solo turno</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl border-l-4 border-[#72B01D]"
+          >
+            <h3 class="title-font text-xl font-semibold mb-4 text-[#72B01D]">
+              Condiciones de Victoria
+            </h3>
+            <ul class="space-y-3 body-font text-gray-300">
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span
+                  ><strong>Atacantes ganan si:</strong> Ocupan las 9 posiciones
+                  de la fortaleza o capturan ambos oficiales</span
+                >
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span
+                  ><strong>Defensores ganan si:</strong> Eliminan suficientes
+                  soldados para hacer imposible que ocupen la fortaleza</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-[#454955]/20 p-6 rounded-xl border-l-4 border-[#72B01D]"
+          >
+            <h3 class="title-font text-xl font-semibold mb-4 text-[#72B01D]">
+              Reglas Especiales
+            </h3>
+            <ul class="space-y-3 body-font text-gray-300">
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>Los soldados siempre mueven primero</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span>Las capturas son obligatorias cuando son posibles</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#72B01D] mr-2">•</span>
+                <span
+                  >No se puede pasar el turno - siempre se debe hacer un
+                  movimiento legal</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-16 bg-[#0D0A0B]">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="font-title text-3xl font-bold mb-2">
+            Opiniones de Jugadores
+          </h2>
+          <p class="max-w-2xl mx-auto">
+            Lo que dicen los primeros jugadores de "Ataque al Fuerte"
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-[#454955]/20 p-6 rounded-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#3F7D20] rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-title font-semibold">Carlos Méndez</h4>
+                <div class="flex text-[#72B01D]">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+            </div>
+            <p class="italic">
+              "La profundidad estratégica es increíble. Cada partida es
+              diferente y requiere pensar en varias jugadas adelante. ¡El mejor
+              juego de mesa que he jugado este año!"
+            </p>
+          </div>
+
+          <div class="bg-[#454955]/20 p-6 rounded-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#3F7D20] rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-title font-semibold">Laura Fernández</h4>
+                <div class="flex text-[#72B01D]">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+            </div>
+            <p class="italic">
+              "Los componentes son de alta calidad y las figuras están muy bien
+              detalladas. La mecánica de cartas añade mucha variedad al juego.
+              ¡Perfecto para jugar con amigos!"
+            </p>
+          </div>
+
+          <div class="bg-[#454955]/20 p-6 rounded-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#3F7D20] rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-title font-semibold">Miguel Torres</h4>
+                <div class="flex text-[#72B01D]">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+            </div>
+            <p class="italic">
+              "La curva de aprendizaje es perfecta. Fácil de aprender pero con
+              suficiente profundidad para mantenerte enganchado. Las partidas
+              son rápidas e intensas. ¡Muy recomendado!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer-ahga base_AHGA="../."></footer-ahga>
+
+    <script type="module" src="../js/index.js"></script>
+  </body>
+</html>
