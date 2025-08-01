@@ -275,5 +275,5 @@ export class ControladorJuego_ah_ga {
     this.estadoJuego_ah_ga.reiniciar_ah_ga();
     this.interfazUsuario_ah_ga.actualizarTurno_ah_ga(this.estadoJuego_ah_ga.turnoActual_ah_ga);
     this.dibujarEstadoActual_ah_ga();
-  }
+  } 
 }

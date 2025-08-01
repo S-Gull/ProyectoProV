@@ -38,7 +38,7 @@ export const setupModalCloseEvents_ahga = () => {
     .getElementById("cerrar-login-success")
     .addEventListener("click", () => {
       hideModal_ahga("modal-login-success");
-      location.href = "index.html";
+      location.href = "./juego.html";
     });
 
   // Modal de error de inicio de sesión

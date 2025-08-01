@@ -4,6 +4,7 @@ import { registrarUsuario, iniciarSesion } from "./auth.js";
 // Funciones auxiliares para manejar modales
 const showModal = (modalId) => {
   document.getElementById(modalId).classList.remove("hidden");
+  console.log(modalId);
 };
 
 const hideModal = (modalId) => {
