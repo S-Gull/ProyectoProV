@@ -21,3 +21,4 @@ export { auth_ahga, db_ahga };
 // Exportar servicios específicos
 export * from "./auth.service.js";
 export * from "./firestore.service.js";
+export * from "./partidas.service.js";

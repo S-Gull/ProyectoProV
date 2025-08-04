@@ -26,6 +26,8 @@ class EstadoJuego_ah_ga {
 class InterfazUsuario_ah_ga {
   constructor() {
     this.elementoTurno_ah_ga = document.getElementById('turnoActual_ah_ga');
+    this.elementoJugador1_ah_ga = document.getElementById('jugador1-info');
+    this.elementoJugador2_ah_ga = document.getElementById('jugador2-info');
   }
 
   actualizarTurno_ah_ga(turno_ah_ga) {
@@ -33,6 +35,15 @@ class InterfazUsuario_ah_ga {
       this.elementoTurno_ah_ga.textContent = turno_ah_ga === 'soldado'
         ? 'Atacantes (Soldados)'
         : 'Defensores (Oficiales)';
+    }
+  }
+
+  actualizarNombresJugadores(nombreJ1, nombreJ2, equipoJ1, equipoJ2) {
+    if (this.elementoJugador1_ah_ga) {
+      this.elementoJugador1_ah_ga.textContent = `${nombreJ1} (${equipoJ1 === 'soldado' ? 'Atacantes' : 'Defensores'})`;
+    }
+    if (this.elementoJugador2_ah_ga) {
+      this.elementoJugador2_ah_ga.textContent = `${nombreJ2} (${equipoJ2 === 'soldado' ? 'Atacantes' : 'Defensores'})`;
     }
   }
 
@@ -109,9 +120,36 @@ export class ControladorJuego_ah_ga {
     this.tableroPartida_ah_ga = new TableroJuego_ah_ga(canvas_ah_ga.width, canvas_ah_ga.height);
     this.estadoJuego_ah_ga = new EstadoJuego_ah_ga();
     this.interfazUsuario_ah_ga = new InterfazUsuario_ah_ga();
+    
+    // Información de los jugadores
+    this.jugadores_ah_ga = {
+      jugador1: null,
+      jugador2: null
+    };
+    this.tiempoInicioPartida_ah_ga = null;
+    this.callbackResultado_ah_ga = null;
 
     this.configurarEventos_ah_ga();
     this.inicializarJuego_ah_ga();
+  }
+
+  // Configurar información de los jugadores
+  configurarJugadores(datosJugadores) {
+    this.jugadores_ah_ga = datosJugadores;
+    this.tiempoInicioPartida_ah_ga = Date.now();
+    
+    // Actualizar la interfaz con los nombres de los jugadores
+    this.interfazUsuario_ah_ga.actualizarNombresJugadores(
+      datosJugadores.jugador1.nombre,
+      datosJugadores.jugador2.nombre,
+      datosJugadores.jugador1.equipo,
+      datosJugadores.jugador2.equipo
+    );
+  }
+
+  // Establecer callback para cuando termine la partida
+  establecerCallbackResultado(callback) {
+    this.callbackResultado_ah_ga = callback;
   }
 
   configurarEventos_ah_ga() {
@@ -246,8 +284,57 @@ export class ControladorJuego_ah_ga {
   verificarEstadoJuego_ah_ga() {
     const resultado_ah_ga = ReglasJuego_ah_ga.verificarVictoria_ah_ga(this.tableroPartida_ah_ga);
     if (resultado_ah_ga) {
-      this.mostrarResultado_ah_ga(resultado_ah_ga);
+      this.procesarFinPartida_ah_ga(resultado_ah_ga);
     }
+  }
+
+  procesarFinPartida_ah_ga(mensajeVictoria) {
+    this.estadoJuego_ah_ga.juegoActivo_ah_ga = false;
+    
+    // Determinar ganador y tipo de victoria
+    let ganadorId, equipoGanador, tipoVictoria;
+    
+    if (mensajeVictoria.includes('Atacantes')) {
+      equipoGanador = 'soldado';
+      tipoVictoria = mensajeVictoria.includes('fortaleza') ? 'ocupacion_fortaleza' : 'captura_oficiales';
+      
+      // Determinar qué jugador ganó (solo si los jugadores están configurados)
+      if (this.jugadores_ah_ga && this.jugadores_ah_ga.jugador1 && this.jugadores_ah_ga.jugador2) {
+        if (this.jugadores_ah_ga.jugador1.equipo === 'soldado') {
+          ganadorId = this.jugadores_ah_ga.jugador1.id;
+        } else if (this.jugadores_ah_ga.jugador2.id) {
+          // Solo asignar ID si el jugador 2 está registrado
+          ganadorId = this.jugadores_ah_ga.jugador2.id;
+        } else {
+          // Si el jugador 2 es invitado, usar un identificador especial
+          ganadorId = 'invitado';
+        }
+      }
+    } else {
+      equipoGanador = 'oficial';
+      tipoVictoria = 'eliminacion_soldados';
+      
+      // Determinar qué jugador ganó (solo si los jugadores están configurados)
+      if (this.jugadores_ah_ga && this.jugadores_ah_ga.jugador1 && this.jugadores_ah_ga.jugador2) {
+        if (this.jugadores_ah_ga.jugador1.equipo === 'oficial') {
+          ganadorId = this.jugadores_ah_ga.jugador1.id;
+        } else if (this.jugadores_ah_ga.jugador2.id) {
+          // Solo asignar ID si el jugador 2 está registrado
+          ganadorId = this.jugadores_ah_ga.jugador2.id;
+        } else {
+          // Si el jugador 2 es invitado, usar un identificador especial
+          ganadorId = 'invitado';
+        }
+      }
+    }
+    
+    // Si hay un callback registrado, llamarlo con los datos del resultado
+    // Ahora siempre llamamos al callback, incluso si el ganador es invitado
+    if (this.callbackResultado_ah_ga && ganadorId) {
+      this.callbackResultado_ah_ga(ganadorId, equipoGanador, tipoVictoria);
+    }
+    
+    this.mostrarResultado_ah_ga(mensajeVictoria);
   }
 
   mostrarResultado_ah_ga(mensaje_ah_ga) {
@@ -274,6 +361,17 @@ export class ControladorJuego_ah_ga {
     );
     this.estadoJuego_ah_ga.reiniciar_ah_ga();
     this.interfazUsuario_ah_ga.actualizarTurno_ah_ga(this.estadoJuego_ah_ga.turnoActual_ah_ga);
+    
+    // Mantener la configuración de jugadores si existe
+    if (this.jugadores_ah_ga && this.jugadores_ah_ga.jugador1 && this.jugadores_ah_ga.jugador2) {
+      this.interfazUsuario_ah_ga.actualizarNombresJugadores(
+        this.jugadores_ah_ga.jugador1.nombre,
+        this.jugadores_ah_ga.jugador2.nombre,
+        this.jugadores_ah_ga.jugador1.equipo,
+        this.jugadores_ah_ga.jugador2.equipo
+      );
+    }
+    
     this.dibujarEstadoActual_ah_ga();
   } 
 }

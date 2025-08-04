@@ -92,6 +92,38 @@ export const obtenerProductos_ahga = async () => {
 };
 
 /**
+ * Valida credenciales de usuario consultando directamente Firestore
+ * @param {string} email - Email del usuario
+ * @param {string} password - Contraseña del usuario
+ * @returns {Promise<Object|null>} Datos del usuario si las credenciales son válidas, null si no
+ * @throws {Error} Error con mensaje amigable si falla la consulta
+ */
+export const validarCredencialesFirestore_ahga = async (email_ahga, password_ahga) => {
+  try {
+    const q_ahga = query(
+      collection(db_ahga, "users"),
+      where("email", "==", email_ahga),
+      where("password", "==", password_ahga)
+    );
+    
+    const querySnapshot_ahga = await getDocs(q_ahga);
+    
+    if (!querySnapshot_ahga.empty) {
+      const doc_ahga = querySnapshot_ahga.docs[0];
+      return { id: doc_ahga.id, ...doc_ahga.data() };
+    } else {
+      return null;
+    }
+  } catch (error_ahga) {
+    console.error("Error al validar credenciales:", error_ahga);
+    throw createFriendlyError_ahga(
+      error_ahga,
+      "Error al validar credenciales del usuario"
+    );
+  }
+};
+
+/**
  * Obtiene datos de un usuario por su ID
  * @param {string} userId - ID del usuario
  * @returns {Promise<Object|null>} Datos del usuario o null si no existe

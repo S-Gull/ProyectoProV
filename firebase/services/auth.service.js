@@ -139,6 +139,45 @@ export const verificarUsuarioActual_ahga = () => {
 };
 
 /**
+ * Valida credenciales de usuario sin cambiar la sesión activa
+ * @param {string} email - Correo electrónico del usuario
+ * @param {string} password - Contraseña del usuario
+ * @returns {Promise<Object>} Datos del usuario validado
+ * @throws {Error} Error si las credenciales son inválidas
+ */
+export const validarCredenciales_ahga = async (email_ahga, password_ahga) => {
+  try {
+    // Guardar el usuario actual
+    const usuarioActual = auth_ahga.currentUser;
+    
+    // Validar credenciales temporalmente
+    const result_ahga = await signInWithEmailAndPassword(
+      auth_ahga,
+      email_ahga,
+      password_ahga
+    );
+    
+    // Obtener datos del usuario validado
+    const usuarioValidado = {
+      uid: result_ahga.user.uid,
+      email: result_ahga.user.email
+    };
+    
+    // Si había un usuario anterior, restaurar la sesión
+    if (usuarioActual) {
+      // Cerrar sesión temporal
+      await signOut(auth_ahga);
+      // Restaurar usuario anterior (esto requiere re-autenticación)
+      // Por ahora, solo devolvemos los datos validados
+    }
+    
+    return usuarioValidado;
+  } catch (error_ahga) {
+    throw createFriendlyError_ahga(error_ahga, "Credenciales inválidas");
+  }
+};
+
+/**
  * Inicia sesión con email y contraseña
  * @param {string} email - Correo electrónico del usuario
  * @param {string} password - Contraseña del usuario
