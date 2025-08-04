@@ -1,6 +1,6 @@
-# 🕹️ Detalle de `game.html` — Interfaz de Juego de Asalto
+# 🕹️ Detalle de `juego.html` — Interfaz de Juego de Asalto
 
-El archivo [`view/game.html`](view/game.html) es la interfaz principal donde los jugadores interactúan con el juego de estrategia **Asalto**. Aquí se despliega el tablero, las piezas, los controles y el sistema de turnos, todo integrado con la lógica JavaScript del proyecto.
+El archivo [`dist/juego.html`](dist/juego.html) es la interfaz principal donde los jugadores interactúan con el juego de estrategia **Asalto**. Aquí se despliega el tablero, las piezas, los controles y el sistema de turnos, todo integrado con la lógica JavaScript del proyecto.
 
 ---
 
@@ -73,4 +73,4 @@ Las condiciones se verifican tras cada movimiento y se muestran en el modal de v
 ---
 
 **Para jugar:**  
-Abre [`view/game.html`](view/game.html) en tu navegador y disfruta de la experiencia
+Abre [`dist/juego.html`](dist/juego.html) en tu navegador y disfruta de la experiencia

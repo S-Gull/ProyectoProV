@@ -96,7 +96,7 @@ class Footer_AHGA extends HTMLElement {
           </div>
           <div class="border-t border-[#454955] pt-8 text-center">
             <p class="body-font text-[#F3EFF5]/60">
-              &copy; 2022 Nexus AG. Todos los derechos reservados.
+              &copy; 2024 Nexus AG. Todos los derechos reservados.
             </p>
           </div>
         </div>

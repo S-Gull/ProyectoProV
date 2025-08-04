@@ -7,120 +7,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../firebase/ui/auth-ui.css" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body class="min-h-screen flex items-center justify-center p-4">
-    <div class="form-container w-full max-w-6xl rounded-2xl overflow-hidden">
-      <div class="grid grid-cols-1 md:grid-cols-2 min-h-[700px]">
-        <!-- Panel izquierdo: Imagen y marca -->
-        <div
-          class="hidden md:flex flex-col justify-between p-10 bg-gradient-to-br from-[#0D0A0B] to-[#3F7D20]/20"
-        >
-          <div>
-            <div class="flex items-center mb-10">
-              <div class="bg-[#72B01D] w-10 h-10 rounded-lg mr-3"></div>
-              <h1 class="title-font text-2xl text-[#72B01D]">NEXUS AG</h1>
-            </div>
-
-            <h2 class="title-font text-3xl font-bold mb-4">
-              Bienvenido a Nexus AG
-            </h2>
-            <p class="mb-6">
-              Accede a tu cuenta para gestionar tus juegos, participar en
-              comunidades y disfrutar de contenido exclusivo.
-            </p>
-
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-              <p>Acceso a todos tus juegos</p>
-            </div>
-
-            <div class="flex items-center space-x-3 mt-4">
-              <div
-                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
-                  />
-                </svg>
-              </div>
-              <p>Comunidad de jugadores</p>
-            </div>
-
-            <div class="flex items-center space-x-3 mt-4">
-              <div
-                class="w-10 h-10 rounded-full bg-[#72B01D] flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-              <p>Soporte técnico prioritario</p>
-            </div>
-          </div>
-
-          <div class="mt-8">
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
-              >
-                <span class="sr-only">Instagram</span>IG
-              </a>
-              <a
-                href="#"
-                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
-              >
-                <span class="sr-only">YouTube</span>YT
-              </a>
-              <a
-                href="#"
-                class="bg-[#454955] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#72B01D] transition"
-              >
-                <span class="sr-only">Twitter</span>TW
-              </a>
-            </div>
-            <p class="mt-4 text-sm text-gray-400">
-              &copy; 2023 Nexus AG. Todos los derechos reservados.
-            </p>
-          </div>
-        </div>
-
-        <!-- Panel derecho: Formularios -->
+    <div class="form-container w-full max-w-4xl rounded-2xl overflow-hidden">
+      <div class="min-h-[700px]">
+        <!-- Formularios -->
         <div class="bg-[#1b1a1b] p-10 md:p-12 flex flex-col justify-center">
           <!-- Formulario de Login (activo por defecto) -->
           <div id="loginForm">
@@ -163,17 +63,25 @@
                   <label for="password" class="block text-sm font-medium"
                     >Contraseña</label
                   >
-                  <a href="#" class="text-sm text-[#72B01D] hover:underline"
-                    >¿Olvidaste tu contraseña?</a
-                  >
                 </div>
-                <input
-                  type="password"
-                  id="password"
-                  class="form-input w-full px-4 py-3 rounded-lg"
-                  placeholder="••••••••"
-                  required
-                />
+                <div class="relative">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-input w-full px-4 py-3 pr-12 rounded-lg"
+                    placeholder="••••••••"
+                    required
+                  />
+                  <button
+                    type="button"
+                    id="togglePassword"
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
+                  >
+                    <i id="iconPassword" class="fas fa-eye"></i>
+                  </button>
+                </div>
+                <!-- Contenedor para políticas de contraseñas -->
+                <div id="politicasPasswordLogin_ahga"></div>
               </div>
 
               <div class="flex items-center">
@@ -193,51 +101,6 @@
               >
                 Iniciar Sesión
               </button>
-
-              <div class="relative my-6">
-                <div class="absolute inset-0 flex items-center">
-                  <div class="w-full border-t border-gray-700"></div>
-                </div>
-                <div class="relative flex justify-center text-sm">
-                  <span class="px-2 bg-[#0D0A0B] text-gray-400"
-                    >O continúa con</span
-                  >
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  class="social-btn flex items-center justify-center py-2.5 rounded-lg"
-                >
-                  <svg
-                    class="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 17.292c-2.293 0-3.542-1.007-4.042-2.938h.063c.583 0 1.156-.052 1.719-.156.542.01 1.08.052 1.615.125.459.073.925.109 1.396.109.323 0 .609-.01.854-.031.188-.021.391-.031.609-.031.833 0 1.412.365 1.735 1.094.188.438.292.943.313 1.516.01.156.01.323.01.49 0 .417-.052.776-.156 1.078-.156.469-.469.844-.938 1.125-.458.271-1.042.406-1.75.406-.802 0-1.447-.125-1.938-.375s-.865-.594-1.125-1.031c-.271-.438-.406-.948-.406-1.531 0-.417.062-.813.188-1.188.125-.375.302-.708.531-1 .229-.292.5-.542.813-.75.302-.208.656-.375 1.063-.5.406-.125.844-.219 1.313-.281.458-.063.948-.104 1.469-.125.51-.021 1.021-.031 1.531-.031v-.938c0-.313-.01-.615-.031-.906-.021-.292-.073-.552-.156-.781-.104-.271-.26-.49-.469-.656-.208-.177-.479-.26-.812-.26-.271 0-.51.052-.719.156-.208.104-.375.24-.5.406-.125.167-.229.365-.313.594-.083.229-.146.49-.188.781l-1.344-.188c.063-.5.177-.927.344-1.281.167-.365.385-.677.656-.938.271-.26.594-.458.969-.594.385-.135.812-.198 1.281-.198.771 0 1.365.156 1.781.469.417.313.708.74.875 1.281.167.542.25 1.156.25 1.844v3.438c0 .417.021.823.063 1.219.042.396.104.781.188 1.156h-1.438c-.083-.333-.146-.677-.188-1.031-.031-.354-.052-.698-.052-1.031 0-.375-.021-.729-.063-1.063-.041-.333-.114-.615-.219-.844-.146-.333-.375-.594-.688-.781-.312-.188-.729-.281-1.25-.281-.271 0-.531.031-.781.094s-.458.156-.635.281c-.177.125-.323.281-.438.469-.115.188-.198.417-.25.688z"
-                    />
-                  </svg>
-                  Google
-                </button>
-
-                <button
-                  type="button"
-                  class="social-btn flex items-center justify-center py-2.5 rounded-lg"
-                >
-                  <svg
-                    class="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"
-                    />
-                  </svg>
-                  Facebook
-                </button>
-              </div>
             </form>
 
             <p class="mt-8 text-center text-gray-400">
@@ -432,13 +295,24 @@
                     class="block text-sm font-medium text-white mb-2"
                     >Contraseña</label
                   >
-                  <input
-                    type="password"
-                    id="regPassword"
-                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
-                    placeholder="Crea una contraseña segura (mínimo 8 caracteres)"
-                    required
-                  />
+                  <div class="relative">
+                    <input
+                      type="password"
+                      id="regPassword"
+                      class="form-input w-full px-5 py-3 pr-12 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                      placeholder="Crea una contraseña segura (mínimo 8 caracteres)"
+                      required
+                    />
+                    <button
+                      type="button"
+                      id="toggleRegPassword"
+                      class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
+                    >
+                      <i id="iconRegPassword" class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                  <!-- Contenedor para políticas de contraseñas -->
+                  <div id="politicasPasswordRegistro_ahga"></div>
                 </div>
                 <div>
                   <label
@@ -446,13 +320,22 @@
                     class="block text-sm font-medium text-white mb-2"
                     >Confirmar contraseña</label
                   >
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    class="form-input w-full px-5 py-3 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
-                    placeholder="Repite la misma contraseña para verificación"
-                    required
-                  />
+                  <div class="relative">
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      class="form-input w-full px-5 py-3 pr-12 rounded-lg bg-[#25262b] border border-gray-700 text-white text-base"
+                      placeholder="Repite la misma contraseña para verificación"
+                      required
+                    />
+                    <button
+                      type="button"
+                      id="toggleConfirmPassword"
+                      class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
+                    >
+                      <i id="iconConfirmPassword" class="fas fa-eye"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -466,15 +349,8 @@
                     required
                   />
                   <label for="terms" class="ml-3 block text-base text-gray-300">
-                    Acepto los
-                    <a href="#" class="text-[#72B01D] hover:underline"
-                      >términos y condiciones</a
-                    >
-                    y la
-                    <a href="#" class="text-[#72B01D] hover:underline"
-                      >política de privacidad</a
-                    >
-                    de Nexus AG
+                    Acepto los términos y condiciones y la política de
+                    privacidad de Nexus AG
                   </label>
                 </div>
                 <div class="flex items-start">

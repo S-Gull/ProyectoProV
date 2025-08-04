@@ -12,6 +12,7 @@ import {
   validateLogin_ahga,
 } from "../utils/validators.js";
 import { createCaptcha_ahga, validateCaptcha_ahga } from "../utils/captcha.js";
+import { inicializarPasswordUI_ahga } from "../utils/password-ui.js";
 
 /**
  * Muestra un modal por su ID
@@ -38,7 +39,11 @@ export const setupModalCloseEvents_ahga = () => {
     .getElementById("cerrar-login-success")
     .addEventListener("click", () => {
       hideModal_ahga("modal-login-success");
-      location.href = "./juego.html";
+      // No redirigir inmediatamente, dejar que Firebase Auth maneje el estado
+      // El listener de autenticación en el header se encargará de actualizar la UI
+      setTimeout(() => {
+        location.href = "../index.html";
+      }, 500); // Dar tiempo para que se actualice el estado de autenticación
     });
 
   // Modal de error de inicio de sesión
@@ -125,7 +130,7 @@ export const setupLoginForm_ahga = () => {
       if (!validation_ahga.isValid) {
         document.getElementById(
           "validation-error-message"
-        ).textContent = `⚠️ ${validation_ahga.errorMessage}`;
+        ).textContent = `⚠️ ${validation_ahga.errors.join(", ")}`;
         showModal_ahga("modal-validation-error");
         // Regenerar CAPTCHA después de un intento fallido
         createCaptcha_ahga("login-captcha-container", "login-captcha-input");
@@ -148,7 +153,6 @@ export const setupLoginForm_ahga = () => {
         document.getElementById("login-error-message").textContent =
           error_ahga.message;
         showModal_ahga("modal-login-error");
-        console.error("Error detallado:", error_ahga);
         // Regenerar CAPTCHA después de un intento fallido
         createCaptcha_ahga("login-captcha-container", "login-captcha-input");
       }
@@ -237,15 +241,9 @@ export const setupRegisterForm_ahga = () => {
       }
 
       // Estructurar datos adicionales
-      const cedula_ahga = {
-        tipo: tipoCedula_ahga,
-        numero: numeroCedula_ahga,
-      };
-
-      const telefono_ahga = {
-        codigo: codigoTelefono_ahga,
-        numero: numeroTelefono_ahga,
-      };
+      // Convertir cédula y teléfono a cadenas de texto simples
+      const cedula_ahga = `${tipoCedula_ahga}-${numeroCedula_ahga}`;
+      const telefono_ahga = `${codigoTelefono_ahga}${numeroTelefono_ahga}`;
 
       try {
         await registrarUsuario_ahga(email_ahga, password_ahga, {
@@ -257,7 +255,6 @@ export const setupRegisterForm_ahga = () => {
           telefono: telefono_ahga,
           direccion: direccion_ahga,
           codigo_postal: codigoPostal_ahga,
-          rol: "usuario",
         });
 
         showModal_ahga("modal-register-success");
@@ -266,7 +263,6 @@ export const setupRegisterForm_ahga = () => {
           "register-error-message"
         ).textContent = `❌ ${error_ahga.message}`;
         showModal_ahga("modal-register-error");
-        console.error("Error completo:", error_ahga);
         // Regenerar CAPTCHA después de un intento fallido
         createCaptcha_ahga(
           "register-captcha-container",
@@ -324,145 +320,6 @@ export const setupCaptchas_ahga = () => {
 };
 
 /**
- * Configura el modal de política de contraseñas y el generador de contraseñas
- */
-export const setupPasswordPolicyUI_ahga = () => {
-  // Crear modal de política de contraseñas si no existe
-  if (!document.getElementById("modal-password-policy")) {
-    const modalHTML_ahga = `
-      
-      <div id="modal-password-policy" class="modal hidden">
-        <div class="modal-content">
-          <h2>Política de Contraseñas</h2>
-          <div id="password-policy-content">
-            <p>Para garantizar la seguridad de tu cuenta, tu contraseña debe:</p>
-            <ul>
-              <li>Tener al menos 8 caracteres</li>
-              <li>Incluir al menos una letra minúscula</li>
-              <li>Incluir al menos una letra mayúscula</li>
-              <li>Incluir al menos un número</li>
-              <li>Incluir al menos un carácter especial</li>
-              <li>No ser una contraseña común o comprometida</li>
-              <li>No contener secuencias obvias (123, abc)</li>
-              <li>No contener caracteres repetidos consecutivos</li>
-            </ul>
-          </div>
-          <div class="password-generator">
-            <h3>Generador de Contraseñas Seguras</h3>
-            <div class="generator-controls">
-              <button id="generate-password" class="btn btn-primary">Generar Contraseña Segura</button>
-              <div id="generated-password-container" class="hidden">
-                <input type="text" id="generated-password" readonly />
-                <button id="copy-password" class="btn btn-secondary">Copiar</button>
-                <button id="use-password" class="btn btn-success">Usar</button>
-              </div>
-            </div>
-          </div>
-          <button id="cerrar-password-policy" class="btn btn-secondary">Cerrar</button>
-        </div>
-      </div>
-    `;
-
-    // Añadir el modal al DOM
-    document.body.insertAdjacentHTML("beforeend", modalHTML_ahga);
-
-    // Configurar eventos
-    document
-      .getElementById("cerrar-password-policy")
-      .addEventListener("click", () => {
-        hideModal_ahga("modal-password-policy");
-      });
-
-    // Evento para generar contraseña
-    document
-      .getElementById("generate-password")
-      .addEventListener("click", async () => {
-        try {
-          // Importar dinámicamente el módulo de política de contraseñas
-          const passwordPolicyModule = await import(
-            "../utils/password-policy.js"
-          );
-          const generatedPassword =
-            passwordPolicyModule.generateSecurePassword_ahga();
-
-          // Mostrar la contraseña generada
-          document.getElementById("generated-password").value =
-            generatedPassword;
-          document
-            .getElementById("generated-password-container")
-            .classList.remove("hidden");
-        } catch (error) {
-          console.error("Error al generar contraseña:", error);
-          // Fallback si no se puede cargar el módulo
-          const chars =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-          let password = "";
-          for (let i = 0; i < 12; i++) {
-            password += chars.charAt(Math.floor(Math.random() * chars.length));
-          }
-          document.getElementById("generated-password").value = password;
-          document
-            .getElementById("generated-password-container")
-            .classList.remove("hidden");
-        }
-      });
-
-    // Evento para copiar contraseña
-    document.getElementById("copy-password").addEventListener("click", () => {
-      const passwordField = document.getElementById("generated-password");
-      passwordField.select();
-      document.execCommand("copy");
-      alert("Contraseña copiada al portapapeles");
-    });
-
-    // Evento para usar la contraseña generada
-    document.getElementById("use-password").addEventListener("click", () => {
-      const generatedPassword =
-        document.getElementById("generated-password").value;
-
-      // Determinar en qué formulario estamos
-      if (
-        !document.getElementById("registerForm").classList.contains("hidden")
-      ) {
-        // Estamos en el formulario de registro
-        document.getElementById("regPassword").value = generatedPassword;
-        document.getElementById("confirmPassword").value = generatedPassword;
-      } else {
-        // Estamos en el formulario de login
-        document.getElementById("password").value = generatedPassword;
-      }
-
-      hideModal_ahga("modal-password-policy");
-    });
-  }
-
-  // Añadir enlaces para mostrar la política de contraseñas
-  const addPasswordPolicyLink = (formId, inputId) => {
-    const passwordField = document.getElementById(inputId);
-    if (passwordField) {
-      const policyLink = document.createElement("a");
-      policyLink.href = "#";
-      policyLink.className = "password-policy-link";
-      policyLink.textContent = "Ver política de contraseñas";
-      policyLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        showModal_ahga("modal-password-policy");
-      });
-
-      // Insertar después del campo de contraseña
-      passwordField.parentNode.insertBefore(
-        policyLink,
-        passwordField.nextSibling
-      );
-    }
-  };
-
-  // Añadir enlaces a los formularios
-  addPasswordPolicyLink("loginForm", "password");
-  addPasswordPolicyLink("registerForm", "regPassword");
-};
-
-/**
  * Inicializa todos los componentes de UI para autenticación
  */
 export const initAuthUI_ahga = () => {
@@ -471,23 +328,7 @@ export const initAuthUI_ahga = () => {
   setupLoginForm_ahga();
   setupRegisterForm_ahga();
   setupCaptchas_ahga();
-  setupPasswordPolicyUI_ahga();
-
-  // Inicializar el temporizador de sesión
-  try {
-    import("../utils/session-timer.js")
-      .then((module) => {
-        module.initSessionTimer_ahga();
-      })
-      .catch((error) => {
-        console.error("Error al inicializar el temporizador de sesión:", error);
-      });
-  } catch (error) {
-    console.error(
-      "Error al cargar el módulo de temporizador de sesión:",
-      error
-    );
-  }
+  inicializarPasswordUI_ahga();
 
   console.log("Componentes de autenticación inicializados");
 };

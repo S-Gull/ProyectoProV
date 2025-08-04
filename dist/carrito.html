@@ -66,16 +66,373 @@
         </div>
         <div id="cart-items" class="p-4 space-y-4"></div>
         <div class="p-4 border-t border-[#454955]">
-          <div class="flex justify-between text-lg font-bold mb-4">
-            <span class="text-[#72B01D]">Total:</span>
-            <span id="cart-total" class="text-[#F3EFF5]">$0</span>
+          <!-- Sección de Cupones -->
+          <div class="mb-4 p-3 bg-[#1A1A1A] rounded-lg border border-[#454955]">
+            <h4 class="text-sm font-semibold text-[#72B01D] mb-2">
+              <i class="ri-coupon-line mr-1"></i>
+              Canjear Cupón
+            </h4>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                id="input-cupon"
+                placeholder="Ingresa tu código de cupón"
+                class="flex-1 px-3 py-2 bg-[#0D0A0B] border border-[#454955] rounded text-[#F3EFF5] placeholder-gray-400 focus:border-[#72B01D] focus:outline-none text-sm"
+              />
+              <button
+                id="aplicar-cupon"
+                class="px-4 py-2 bg-[#72B01D] hover:bg-[#3F7D20] text-white rounded transition-colors text-sm font-medium"
+              >
+                Aplicar
+              </button>
+            </div>
+            <div id="info-cupon" class="mt-2 text-xs hidden">
+              <!-- Información del cupón aplicado aparecerá aquí -->
+            </div>
           </div>
+
+          <!-- Resumen de totales -->
+          <div class="space-y-2 mb-4">
+            <div id="subtotal-container" class="flex justify-between text-sm">
+              <span class="text-gray-400">Subtotal:</span>
+              <span id="cart-subtotal" class="text-[#F3EFF5]">$0</span>
+            </div>
+            <div
+              id="descuento-container"
+              class="flex justify-between text-sm text-green-400 hidden"
+            >
+              <span>Descuento:</span>
+              <span id="cart-descuento">-$0</span>
+            </div>
+            <div
+              class="flex justify-between text-lg font-bold border-t border-[#454955] pt-2"
+            >
+              <span class="text-[#72B01D]">Total:</span>
+              <span id="cart-total" class="text-[#F3EFF5]">$0</span>
+            </div>
+          </div>
+
           <button
             id="checkout"
             class="w-full bg-[#72B01D] hover:bg-[#3F7D20] text-white py-2 rounded transition-colors"
           >
             Finalizar Compra
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Selección de Método de Pago -->
+    <div
+      id="modal-metodo-pago"
+      class="fixed inset-0 bg-black/50 z-50 items-center justify-center hidden flex"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#72B01D]"
+      >
+        <div
+          class="p-4 border-b border-[#454955] flex justify-between items-center"
+        >
+          <h3 class="text-xl font-bold text-[#72B01D]">
+            Seleccionar Método de Pago
+          </h3>
+          <button
+            id="cerrar-metodo-pago"
+            class="text-[#F3EFF5] hover:text-red-400 text-xl"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            <button
+              id="btn-pago-movil"
+              class="w-full bg-[#72B01D] hover:bg-[#3F7D20] text-white py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-3 text-lg font-semibold"
+            >
+              <i class="ri-smartphone-line text-2xl"></i>
+              Pago Móvil
+            </button>
+            <button
+              id="btn-zelle"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-3 text-lg font-semibold"
+            >
+              <i class="ri-bank-card-line text-2xl"></i>
+              Zelle
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Datos de Pago Móvil -->
+    <div
+      id="modal-pago-movil"
+      class="fixed inset-0 bg-black/50 z-50 items-center justify-center hidden flex"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#72B01D]"
+      >
+        <div
+          class="p-4 border-b border-[#454955] flex justify-between items-center"
+        >
+          <h3 class="text-xl font-bold text-[#72B01D]">
+            <i class="ri-smartphone-line mr-2"></i>DATOS DE PAGO
+          </h3>
+          <button
+            id="cerrar-pago-movil"
+            class="text-[#F3EFF5] hover:text-red-400 text-xl"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <form id="form-pago-movil" class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Nombre completo</label
+                >
+                <input
+                  type="text"
+                  id="nombre-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Dirección de entrega</label
+                >
+                <input
+                  type="text"
+                  id="direccion-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Teléfono</label>
+                <input
+                  type="tel"
+                  id="telefono-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Método de Pago</label
+                >
+                <input
+                  type="text"
+                  id="metodo-pago-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                  value="Pago Móvil"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >N° de Referencia</label
+                >
+                <input
+                  type="text"
+                  id="referencia-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Teléfono del Emisor</label
+                >
+                <input
+                  type="tel"
+                  id="telefono-emisor-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Banco Emisor</label
+                >
+                <select
+                  id="banco-emisor-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                >
+                  <option value="">Selecciona un banco</option>
+                  <option value="banesco">Banesco</option>
+                  <option value="mercantil">Mercantil</option>
+                  <option value="venezuela">Banco de Venezuela</option>
+                  <option value="provincial">BBVA Provincial</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Monto (Bs)</label>
+                <input
+                  type="number"
+                  id="monto-movil"
+                  step="0.01"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Fecha de Transacción</label
+                >
+                <input
+                  type="date"
+                  id="fecha-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Cédula de Identidad</label
+                >
+                <input
+                  type="text"
+                  id="cedula-movil"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-[#72B01D] hover:bg-[#3F7D20] text-white py-3 rounded-lg transition-colors font-semibold"
+            >
+              Confirmar Pago
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Datos de Zelle -->
+    <div
+      id="modal-zelle"
+      class="fixed inset-0 bg-black/50 z-50 items-center justify-center hidden flex"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-md w-full border border-[#72B01D]"
+      >
+        <div
+          class="p-4 border-b border-[#454955] flex justify-between items-center"
+        >
+          <h3 class="text-xl font-bold text-[#72B01D]">
+            <i class="ri-bank-card-line mr-2"></i>DATOS DE PAGO
+          </h3>
+          <button
+            id="cerrar-zelle"
+            class="text-[#F3EFF5] hover:text-red-400 text-xl"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <form id="form-zelle" class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Nombre completo</label
+                >
+                <input
+                  type="text"
+                  id="nombre-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Dirección de entrega</label
+                >
+                <input
+                  type="text"
+                  id="direccion-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Teléfono</label>
+                <input
+                  type="tel"
+                  id="telefono-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Método de Pago</label
+                >
+                <input
+                  type="text"
+                  id="metodo-pago-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                  value="Zelle"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Correo Zelle</label
+                >
+                <input
+                  type="email"
+                  id="correo-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Monto (USD)</label
+                >
+                <input
+                  type="number"
+                  id="monto-zelle"
+                  step="0.01"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Nombre del Titular</label
+                >
+                <input
+                  type="text"
+                  id="titular-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >N° Confirmación</label
+                >
+                <input
+                  type="text"
+                  id="confirmacion-zelle"
+                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors font-semibold"
+            >
+              Confirmar Pago
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -116,6 +473,102 @@
       </div>
     </div>
 
+    <!-- Modal de Factura -->
+    <div
+      id="modal-factura"
+      class="fixed inset-0 bg-black/50 z-50 items-center justify-center hidden flex"
+    >
+      <div
+        class="bg-[#0D0A0B] rounded-lg shadow-lg max-w-lg w-full border border-[#72B01D]"
+      >
+        <div
+          class="p-4 border-b border-[#454955] flex justify-between items-center"
+        >
+          <h3 class="text-xl font-bold text-[#72B01D]">
+            <i class="ri-file-text-line mr-2"></i>Factura de Compra
+          </h3>
+          <button
+            id="cerrar-factura"
+            class="text-[#F3EFF5] hover:text-red-400 text-xl"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <!-- Información del cliente -->
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-[#72B01D] mb-3">
+              Datos del Cliente
+            </h4>
+            <div class="bg-[#454955]/30 p-4 rounded-lg space-y-2">
+              <div class="flex justify-between">
+                <span class="text-[#F3EFF5]/70">Nombre:</span>
+                <span id="factura-nombre" class="text-[#F3EFF5]"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#F3EFF5]/70">Dirección:</span>
+                <span id="factura-direccion" class="text-[#F3EFF5]"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#F3EFF5]/70">Teléfono:</span>
+                <span id="factura-telefono" class="text-[#F3EFF5]"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#F3EFF5]/70">Método de Pago:</span>
+                <span id="factura-metodo-pago" class="text-[#F3EFF5]"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalles del pago -->
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-[#72B01D] mb-3">
+              Detalles del Pago
+            </h4>
+            <div
+              id="factura-detalles-pago"
+              class="bg-[#454955]/30 p-4 rounded-lg space-y-2"
+            >
+              <!-- Los detalles específicos del método de pago se llenarán dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Productos comprados -->
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-[#72B01D] mb-3">Productos</h4>
+            <div
+              id="factura-productos"
+              class="space-y-2 max-h-40 overflow-y-auto"
+            >
+              <!-- Los productos se llenarán dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Total -->
+          <div class="border-t border-[#454955] pt-4 mb-6">
+            <div class="flex justify-between items-center text-lg font-bold">
+              <span class="text-[#72B01D]">Total Pagado:</span>
+              <span id="factura-total" class="text-[#F3EFF5]"></span>
+            </div>
+          </div>
+
+          <!-- Fecha -->
+          <div class="text-center text-sm text-[#F3EFF5]/70 mb-4">
+            Fecha: <span id="factura-fecha"></span>
+          </div>
+
+          <div class="flex justify-end">
+            <button
+              id="aceptar-factura"
+              class="bg-[#72B01D] hover:bg-[#3F7D20] text-white px-6 py-2 rounded transition-colors"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal de Carrito Vacío -->
     <div
       id="modal-carrito-vacio"
@@ -141,6 +594,6 @@
       </div>
     </div>
 
-    <script type="module" src="../carrito/carrito.js"></script>
+    <script type="module" src="../carrito/tienda.js"></script>
   </body>
 </html>

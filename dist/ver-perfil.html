@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ver Perfil - Nexus AG</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="../img/logo80x80.png" />
+  </head>
+  <body class="bg-[#1a1b23] text-[#f3eff5] min-h-screen">
+    <!-- Header -->
+    <header-ahga
+      base_AHGA=".."
+      opciones_AHGA='{
+  "loginHref_AHGA": "./login.html"
+}'
+    ></header-ahga>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto px-4 py-8 mt-20">
+      <div class="max-w-4xl mx-auto">
+        <!-- Título -->
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-[#f3eff5] mb-2">
+            <i class="fas fa-user mr-3 text-[#72b01d]"></i>
+            Mi Perfil
+          </h1>
+          <p class="text-[#b8b3ba]">Información de tu cuenta</p>
+        </div>
+
+        <!-- Tarjeta de Perfil -->
+        <div class="bg-[#2a2d3a] rounded-lg shadow-lg overflow-hidden">
+          <!-- Header de la tarjeta con avatar -->
+          <div class="bg-gradient-to-r from-[#72b01d] to-[#5a8c16] p-6">
+            <div
+              class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6"
+            >
+              <div class="relative">
+                <img
+                  id="avatarPerfil_ahga"
+                  src="../img/default-avatar.svg"
+                  alt="Avatar"
+                  class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+                <div
+                  class="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-2 border-white"
+                ></div>
+              </div>
+              <div class="text-center md:text-left text-white">
+                <h2
+                  id="nombrePerfil_ahga"
+                  class="text-2xl md:text-3xl font-bold mb-2"
+                >
+                  Cargando...
+                </h2>
+                <p id="emailPerfil_ahga" class="text-lg opacity-90 mb-2">
+                  usuario@email.com
+                </p>
+                <div
+                  class="flex items-center justify-center md:justify-start space-x-2"
+                >
+                  <i class="fas fa-calendar-alt"></i>
+                  <span id="fechaRegistro_ahga" class="text-sm opacity-80"
+                    >Miembro desde: Enero 2024</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de la tarjeta -->
+          <div class="p-6">
+            <!-- Información Personal y Estadísticas -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <!-- Información Personal -->
+              <div class="space-y-4">
+                <h3
+                  class="text-xl font-semibold text-[#f3eff5] mb-4 border-b border-[#454955] pb-2"
+                >
+                  <i class="fas fa-info-circle mr-2 text-[#72b01d]"></i>
+                  Información Personal
+                </h3>
+
+                <div class="space-y-3">
+                  <div class="flex items-center space-x-3">
+                    <i class="fas fa-user w-5 text-[#72b01d]"></i>
+                    <div>
+                      <span class="text-sm text-[#b8b3ba]">Nombre:</span>
+                      <p
+                        id="nombreCompleto_ahga"
+                        class="text-[#f3eff5] font-medium"
+                      >
+                        -
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center space-x-3">
+                    <i class="fas fa-phone w-5 text-[#72b01d]"></i>
+                    <div>
+                      <span class="text-sm text-[#b8b3ba]">Teléfono:</span>
+                      <p
+                        id="telefonoPerfil_ahga"
+                        class="text-[#f3eff5] font-medium"
+                      >
+                        No especificado
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center space-x-3">
+                    <i class="fas fa-birthday-cake w-5 text-[#72b01d]"></i>
+                    <div>
+                      <span class="text-sm text-[#b8b3ba]"
+                        >Fecha de Nacimiento:</span
+                      >
+                      <p
+                        id="fechaNacimientoPerfil_ahga"
+                        class="text-[#f3eff5] font-medium"
+                      >
+                        No especificado
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Sección de Cupones Disponibles -->
+                  <div class="mt-6 pt-4 border-t border-[#454955]">
+                    <div class="flex items-center space-x-2 mb-3">
+                      <i class="fas fa-ticket-alt text-[#72b01d]"></i>
+                      <h4 class="text-lg font-semibold text-[#f3eff5]">
+                        Cupones Disponibles
+                      </h4>
+                    </div>
+                    <div id="cuponesDisponibles_ahga" class="space-y-2">
+                      <div class="text-sm text-[#b8b3ba] italic">
+                        Cargando cupones...
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Estadísticas -->
+              <div class="space-y-4">
+                <h3
+                  class="text-xl font-semibold text-[#f3eff5] mb-4 border-b border-[#454955] pb-2"
+                >
+                  <i class="fas fa-chart-line mr-2 text-[#72b01d]"></i>
+                  Estadísticas
+                </h3>
+
+                <div class="flex justify-center">
+                  <div class="bg-[#1a1b23] p-4 rounded-lg text-center w-48">
+                    <i class="fas fa-trophy text-2xl text-[#72b01d] mb-2"></i>
+                    <p
+                      class="text-2xl font-bold text-[#f3eff5]"
+                      id="partidasGanadas_ahga"
+                    >
+                      0
+                    </p>
+                    <p class="text-sm text-[#b8b3ba]">Partidas Ganadas</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                id="editarPerfilBtn_ahga"
+                class="flex-1 bg-[#72b01d] hover:bg-[#5a8c16] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+              >
+                <i class="fas fa-edit mr-2"></i>
+                Editar Perfil
+              </button>
+
+              <button
+                id="volverBtn_ahga"
+                class="flex-1 bg-[#25262b] hover:bg-[#454955] text-[#f3eff5] font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+              >
+                <i class="fas fa-arrow-left mr-2"></i>
+                Volver
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer-ahga></footer-ahga>
+
+    <!-- Scripts -->
+    <script type="module" src="../components/header.js"></script>
+    <script type="module" src="../components/footer.js"></script>
+    <script type="module" src="../js/ver-perfil.js"></script>
+  </body>
+</html>
