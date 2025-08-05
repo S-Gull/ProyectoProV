@@ -186,6 +186,19 @@
           </button>
         </div>
         <div class="p-6">
+          <!-- Información del banco receptor -->
+          <div
+            class="bg-[#454955]/30 border border-[#72B01D]/50 rounded-lg p-3 mb-4"
+          >
+            <h4 class="text-sm font-semibold text-[#72B01D] mb-2">
+              <i class="ri-bank-line mr-1"></i>Información del Banco Receptor
+            </h4>
+            <div class="grid grid-cols-1 gap-1 text-xs text-[#F3EFF5]/80">
+              <div><span class="font-medium">Banco:</span> Mercantil</div>
+              <div><span class="font-medium">Teléfono:</span> 0414-1235643</div>
+              <div><span class="font-medium">Cédula:</span> V-20874541</div>
+            </div>
+          </div>
           <form id="form-pago-movil" class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
               <div>
@@ -209,25 +222,13 @@
                 />
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4">
               <div>
                 <label class="block text-sm font-medium mb-1">Teléfono</label>
                 <input
                   type="tel"
                   id="telefono-movil"
                   class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1"
-                  >Método de Pago</label
-                >
-                <input
-                  type="text"
-                  id="metodo-pago-movil"
-                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
-                  value="Pago Móvil"
-                  readonly
                 />
               </div>
             </div>
@@ -253,7 +254,7 @@
                 />
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4">
               <div>
                 <label class="block text-sm font-medium mb-1"
                   >Banco Emisor</label
@@ -268,16 +269,6 @@
                   <option value="venezuela">Banco de Venezuela</option>
                   <option value="provincial">BBVA Provincial</option>
                 </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">Monto (Bs)</label>
-                <input
-                  type="number"
-                  id="monto-movil"
-                  step="0.01"
-                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
-                  readonly
-                />
               </div>
             </div>
             <div class="grid grid-cols-2 gap-4">
@@ -335,6 +326,24 @@
           </button>
         </div>
         <div class="p-6">
+          <!-- Información del receptor Zelle -->
+          <div
+            class="bg-[#454955]/30 border border-[#72B01D]/50 rounded-lg p-3 mb-4"
+          >
+            <h4 class="text-sm font-semibold text-[#72B01D] mb-2">
+              <i class="ri-bank-card-line mr-1"></i>Información del Receptor
+              Zelle
+            </h4>
+            <div class="grid grid-cols-1 gap-1 text-xs text-[#F3EFF5]/80">
+              <div>
+                <span class="font-medium">Email:</span> nexusag.games@gmail.com
+              </div>
+              <div><span class="font-medium">Nombre:</span> Nexus AG Games</div>
+              <div>
+                <span class="font-medium">Teléfono:</span> +1 (555) 123-4567
+              </div>
+            </div>
+          </div>
           <form id="form-zelle" class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
               <div>
@@ -358,7 +367,7 @@
                 />
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4">
               <div>
                 <label class="block text-sm font-medium mb-1">Teléfono</label>
                 <input
@@ -368,42 +377,15 @@
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium mb-1"
-                  >Método de Pago</label
-                >
-                <input
-                  type="text"
-                  id="metodo-pago-zelle"
-                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
-                  value="Zelle"
-                  readonly
-                />
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium mb-1"
-                  >Correo Zelle</label
-                >
+                <label class="block text-sm font-medium mb-1">Correo electrónico</label>
                 <input
                   type="email"
                   id="correo-zelle"
                   class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
                 />
               </div>
-              <div>
-                <label class="block text-sm font-medium mb-1"
-                  >Monto (USD)</label
-                >
-                <input
-                  type="number"
-                  id="monto-zelle"
-                  step="0.01"
-                  class="w-full bg-[#454955] border border-[#72B01D] rounded px-3 py-2 text-[#F3EFF5] focus:outline-none focus:border-[#72B01D]"
-                  readonly
-                />
-              </div>
             </div>
+
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium mb-1"

@@ -417,16 +417,14 @@ class Header_AHGA extends HTMLElement {
 
   // Cerrar sesión
   cerrarSesion_ahga() {
-    if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
-      // Limpiar sessionStorage
-      sessionStorage.removeItem("datosUsuario_ahga");
+    // Limpiar sessionStorage
+    sessionStorage.removeItem("datosUsuario_ahga");
 
-      // Cerrar sesión en Firebase
-      this.cerrarSesionEnFirebase_ahga();
+    // Cerrar sesión en Firebase
+    this.cerrarSesionEnFirebase_ahga();
 
-      // Redirigir a login
-      location.href = "/dist/login.html";
-    }
+    // Redirigir a login
+    location.href = "/dist/login.html";
   }
 
   // Cerrar sesión en Firebase

@@ -1,6 +1,7 @@
 // Ver Perfil - Funcionalidad
 import { obtenerCuponesUsuario_ahga } from "../firebase/services/firestore.service.js";
 import { verificarUsuarioActual_ahga } from "../firebase/services/auth.service.js";
+import { obtenerEstadisticasJugador_ahga } from "../firebase/services/partidas.service.js";
 
 class VerPerfil_AHGA {
   constructor() {
@@ -10,7 +11,7 @@ class VerPerfil_AHGA {
 
   async init() {
     await this.cargarDatosUsuario();
-    this.mostrarDatosPerfil();
+    await this.mostrarDatosPerfil();
     await this.cargarCupones();
     this.configurarEventos();
   }
@@ -54,7 +55,7 @@ class VerPerfil_AHGA {
   }
 
   // Mostrar datos del perfil en la interfaz
-  mostrarDatosPerfil() {
+  async mostrarDatosPerfil() {
     console.log("🎨 [DEBUG] Iniciando mostrarDatosPerfil...");
 
     if (!this.datosUsuario) {
@@ -187,21 +188,52 @@ class VerPerfil_AHGA {
       console.log("⚠️ [DEBUG] Elemento fechaRegistro no encontrado");
     }
 
-    // Estadísticas
+    // Estadísticas - Obtener directamente desde Firebase
     if (elementos.partidasGanadas) {
-      const partidasGanadas =
-        this.datosUsuario.estadisticas?.partidasGanadas || "0";
-      elementos.partidasGanadas.textContent = partidasGanadas;
-      console.log(
-        "🏆 [DEBUG] Estadísticas del usuario:",
-        this.datosUsuario.estadisticas
-      );
-      console.log("🏆 [DEBUG] Partidas ganadas asignadas:", partidasGanadas);
+      await this.cargarPartidasGanadasDesdeFirebase(elementos.partidasGanadas);
     } else {
       console.log("⚠️ [DEBUG] Elemento partidasGanadas no encontrado");
     }
 
     console.log("✅ [DEBUG] Finalizado mostrarDatosPerfil");
+  }
+
+  // Cargar partidas ganadas directamente desde Firebase
+  async cargarPartidasGanadasDesdeFirebase(elemento) {
+    try {
+      console.log("🏆 [DEBUG] Obteniendo partidas ganadas desde Firebase...");
+      
+      // Obtener el usuario actual
+      let usuario = verificarUsuarioActual_ahga();
+      
+      // Si no hay usuario en Firebase Auth, intentar obtener de sessionStorage
+      if (!usuario && this.datosUsuario) {
+        const uid = this.datosUsuario.uid || this.datosUsuario.id;
+        if (uid) {
+          usuario = { uid: uid };
+          console.log("🏆 [DEBUG] UID encontrado en sessionStorage:", uid);
+        }
+      }
+      
+      if (!usuario || !usuario.uid) {
+        console.error("❌ [ERROR] No se pudo obtener el UID del usuario");
+        elemento.textContent = "0";
+        return;
+      }
+      
+      // Obtener estadísticas desde Firebase
+      const estadisticas = await obtenerEstadisticasJugador_ahga(usuario.uid);
+      console.log("🏆 [DEBUG] Estadísticas obtenidas desde Firebase:", estadisticas);
+      
+      const partidasGanadas = estadisticas?.partidasGanadas || 0;
+      elemento.textContent = partidasGanadas.toString();
+      
+      console.log("🏆 [DEBUG] Partidas ganadas actualizadas:", partidasGanadas);
+      
+    } catch (error) {
+      console.error("❌ [ERROR] Error al cargar partidas ganadas desde Firebase:", error);
+      elemento.textContent = "0";
+    }
   }
 
   // Cargar cupones del usuario
@@ -347,6 +379,41 @@ class VerPerfil_AHGA {
       volverBtn.addEventListener("click", () => {
         window.history.back();
       });
+    }
+
+    // Escuchar cambios en sessionStorage
+    window.addEventListener('storage', (e) => {
+      console.log("🔄 [ver-perfil.js] Evento storage detectado:", e.key);
+      if (e.key === 'datosUsuario_ahga') {
+        console.log("📊 [ver-perfil.js] Datos de usuario actualizados, recargando perfil...");
+        this.recargarDatosPerfil();
+      }
+    });
+
+    // Escuchar evento personalizado de actualización de perfil
+    window.addEventListener('actualizarPerfil_ahga', (e) => {
+      console.log("🎯 [ver-perfil.js] Evento actualizarPerfil_ahga recibido:", e.detail);
+      this.recargarDatosPerfil();
+    });
+  }
+
+  // Función para recargar los datos del perfil
+  async recargarDatosPerfil() {
+    try {
+      console.log("🔄 [ver-perfil.js] Recargando datos del perfil...");
+      await this.cargarDatosUsuario();
+      await this.mostrarDatosPerfil();
+      
+      // Actualizar partidas ganadas directamente desde Firebase
+      const partidasGanadasElement = document.getElementById("partidasGanadas_ahga");
+      if (partidasGanadasElement) {
+        await this.cargarPartidasGanadasDesdeFirebase(partidasGanadasElement);
+      }
+      
+      await this.cargarCupones();
+      console.log("✅ [ver-perfil.js] Perfil recargado exitosamente");
+    } catch (error) {
+      console.error("❌ [ver-perfil.js] Error al recargar perfil:", error);
     }
   }
 

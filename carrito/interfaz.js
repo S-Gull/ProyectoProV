@@ -96,16 +96,16 @@ class ServicioInterfaz_ahga {
     if (this.botonCheckout_ahga) {
       this.botonCheckout_ahga.addEventListener("click", async () => {
         console.log("Botón checkout clickeado");
-        
+
         // Verificar si el usuario está autenticado
         const usuarioAutenticado = await this.verificarAutenticacion_ahga();
-        
+
         if (!usuarioAutenticado) {
           console.log("Usuario no autenticado, mostrando modal de login");
           this.mostrarModalLoginRequerido_ahga();
           return;
         }
-        
+
         if (!this.servicioCarrito_ahga.estaVacio_ahga()) {
           console.log(
             "Carrito tiene items, mostrando selección de método de pago"
@@ -511,9 +511,6 @@ class ServicioInterfaz_ahga {
       bancoEmisor:
         formData_ahga.get("banco-emisor-movil") ||
         document.getElementById("banco-emisor-movil").value,
-      monto:
-        formData_ahga.get("monto-movil") ||
-        document.getElementById("monto-movil").value,
       fecha:
         formData_ahga.get("fecha-movil") ||
         document.getElementById("fecha-movil").value,
@@ -530,7 +527,6 @@ class ServicioInterfaz_ahga {
       "referencia",
       "telefonoEmisor",
       "bancoEmisor",
-      "monto",
       "fecha",
       "cedula",
     ];
@@ -586,12 +582,6 @@ class ServicioInterfaz_ahga {
       telefono:
         formData_ahga.get("telefono-zelle") ||
         document.getElementById("telefono-zelle").value,
-      correoZelle:
-        formData_ahga.get("correo-zelle") ||
-        document.getElementById("correo-zelle").value,
-      monto:
-        formData_ahga.get("monto-zelle") ||
-        document.getElementById("monto-zelle").value,
       titular:
         formData_ahga.get("titular-zelle") ||
         document.getElementById("titular-zelle").value,
@@ -605,8 +595,6 @@ class ServicioInterfaz_ahga {
       "nombre",
       "direccion",
       "telefono",
-      "correoZelle",
-      "monto",
       "titular",
       "confirmacion",
     ];
@@ -915,7 +903,10 @@ class ServicioInterfaz_ahga {
       if (datosUsuario) {
         const usuario = JSON.parse(datosUsuario);
         if (usuario && usuario.uid) {
-          console.log("Usuario autenticado encontrado en sessionStorage:", usuario.email);
+          console.log(
+            "Usuario autenticado encontrado en sessionStorage:",
+            usuario.email
+          );
           return true;
         }
       }
@@ -925,9 +916,12 @@ class ServicioInterfaz_ahga {
         "../firebase/services/auth.service.js"
       );
       const usuarioFirebase = verificarUsuarioActual_ahga();
-      
+
       if (usuarioFirebase && usuarioFirebase.uid) {
-        console.log("Usuario autenticado encontrado en Firebase:", usuarioFirebase.email);
+        console.log(
+          "Usuario autenticado encontrado en Firebase:",
+          usuarioFirebase.email
+        );
         return true;
       }
 
@@ -943,11 +937,12 @@ class ServicioInterfaz_ahga {
   mostrarModalLoginRequerido_ahga() {
     // Crear modal dinámicamente si no existe
     let modalLogin = document.getElementById("modal-login-requerido");
-    
+
     if (!modalLogin) {
       modalLogin = document.createElement("div");
       modalLogin.id = "modal-login-requerido";
-      modalLogin.className = "fixed inset-0 bg-black/50 z-50 flex items-center justify-center";
+      modalLogin.className =
+        "fixed inset-0 bg-black/50 z-50 flex items-center justify-center";
       modalLogin.innerHTML = `
         <div class="bg-[#0D0A0B] border border-[#454955] rounded-xl p-6 max-w-md mx-4">
           <div class="text-center">
@@ -978,13 +973,15 @@ class ServicioInterfaz_ahga {
       document.body.appendChild(modalLogin);
 
       // Configurar eventos del modal
-       document.getElementById("btn-ir-login").addEventListener("click", () => {
-         window.location.href = "../dist/login.html";
-       });
-
-      document.getElementById("btn-cancelar-login").addEventListener("click", () => {
-        this.ocultarModal_ahga(modalLogin);
+      document.getElementById("btn-ir-login").addEventListener("click", () => {
+        window.location.href = "../dist/login.html";
       });
+
+      document
+        .getElementById("btn-cancelar-login")
+        .addEventListener("click", () => {
+          this.ocultarModal_ahga(modalLogin);
+        });
 
       // Cerrar modal al hacer click fuera
       modalLogin.addEventListener("click", (e) => {

@@ -1,259 +1,339 @@
 // piezas.js
 
 /* Clase base abstracta para todas las piezas */
-class PiezaBase_ah_ga {
-  constructor(tipoPieza_ah_ga, filaPosicion_ah_ga, columnaPosicion_ah_ga) {
-    if (new.target === PiezaBase_ah_ga) {
-      throw new Error("No se puede instanciar PiezaBase_ah_ga directamente");
+class PiezaBase_ahga {
+  constructor(tipoPieza_ahga, filaPosicion_ahga, columnaPosicion_ahga) {
+    if (new.target === PiezaBase_ahga) {
+      throw new Error("No se puede instanciar PiezaBase_ahga directamente");
     }
-    this.tipoPieza_ah_ga = tipoPieza_ah_ga;
-    this.filaPosicion_ah_ga = filaPosicion_ah_ga;
-    this.columnaPosicion_ah_ga = columnaPosicion_ah_ga;
-    this.estaSeleccionada_ah_ga = false;
-    this.estaSobre_ah_ga = false;
+    this.tipoPieza_ahga = tipoPieza_ahga;
+    this.filaPosicion_ahga = filaPosicion_ahga;
+    this.columnaPosicion_ahga = columnaPosicion_ahga;
+    this.estaSeleccionada_ahga = false;
+    this.estaSobre_ahga = false;
   }
 
-  moverA_ah_ga(nuevaFila_ah_ga, nuevaColumna_ah_ga) {
-    this.filaPosicion_ah_ga = nuevaFila_ah_ga;
-    this.columnaPosicion_ah_ga = nuevaColumna_ah_ga;
+  moverA_ahga(nuevaFila_ahga, nuevaColumna_ahga) {
+    this.filaPosicion_ahga = nuevaFila_ahga;
+    this.columnaPosicion_ahga = nuevaColumna_ahga;
   }
 
-  calcularMovimientosValidos_ah_ga(tableroJuego_ah_ga) {
+  calcularMovimientosValidos_ahga(tableroJuego_ahga) {
     throw new Error("Método abstracto debe ser implementado por subclases");
   }
 }
 
 /* Helper para validaciones de movimiento */
-class ValidadorMovimiento_ah_ga {
-  static esCasillaValida_ah_ga(tablero_ah_ga, fila_ah_ga, columna_ah_ga) {
-    return tablero_ah_ga.esCasillaValida_ah_ga(fila_ah_ga, columna_ah_ga);
+class ValidadorMovimiento_ahga {
+  static esCasillaValida_ahga(tablero_ahga, fila_ahga, columna_ahga) {
+    return tablero_ahga.esCasillaValida_ahga(fila_ahga, columna_ahga);
   }
 
-  static esCasillaOcupada_ah_ga(tablero_ah_ga, fila_ah_ga, columna_ah_ga) {
-    return !!tablero_ah_ga.obtenerCasilla_ah_ga(fila_ah_ga, columna_ah_ga).pieza_ah_ga;
+  static esCasillaOcupada_ahga(tablero_ahga, fila_ahga, columna_ahga) {
+    return !!tablero_ahga.obtenerCasilla_ahga(fila_ahga, columna_ahga)
+      .pieza_ahga;
   }
 
-  static puedeMoverDiagonal_ah_ga(tablero_ah_ga, fila_ah_ga, columna_ah_ga) {
-    return tablero_ah_ga.puedeMoverseDiagonal_ah_ga(fila_ah_ga, columna_ah_ga);
+  static puedeMoverDiagonal_ahga(tablero_ahga, fila_ahga, columna_ahga) {
+    return tablero_ahga.puedeMoverseDiagonal_ahga(fila_ahga, columna_ahga);
   }
 }
 
 /* Estrategia de movimiento para soldados */
-class EstrategiaMovimientoSoldado_ah_ga {
-  constructor(pieza_ah_ga, tablero_ah_ga) {
-    this.pieza_ah_ga = pieza_ah_ga;
-    this.tablero_ah_ga = tablero_ah_ga;
+class EstrategiaMovimientoSoldado_ahga {
+  constructor(pieza_ahga, tablero_ahga) {
+    this.pieza_ahga = pieza_ahga;
+    this.tablero_ahga = tablero_ahga;
   }
 
-  obtenerDireccionesBase_ah_ga() {
+  obtenerDireccionesBase_ahga() {
     return [
       [-1, 0], // Arriba
-      [1, 0],  // Abajo
+      [1, 0], // Abajo
       [0, -1], // Izquierda
-      [0, 1]  // Derecha
+      [0, 1], // Derecha
     ];
   }
 
-  obtenerDireccionesDiagonales_ah_ga() {
+  obtenerDireccionesDiagonales_ahga() {
     return [
       [-1, -1], // Arriba-Izquierda
-      [-1, 1],  // Arriba-Derecha
-      [1, -1],  // Abajo-Izquierda
-      [1, 1]   // Abajo-Derecha
+      [-1, 1], // Arriba-Derecha
+      [1, -1], // Abajo-Izquierda
+      [1, 1], // Abajo-Derecha
     ];
   }
 
-  calcularMovimientos_ah_ga() {
-    const direcciones_ah_ga = this.obtenerDireccionesBase_ah_ga();
-    if (ValidadorMovimiento_ah_ga.puedeMoverDiagonal_ah_ga(
-      this.tablero_ah_ga,
-      this.pieza_ah_ga.filaPosicion_ah_ga,
-      this.pieza_ah_ga.columnaPosicion_ah_ga
-    )) {
-      direcciones_ah_ga.push(...this.obtenerDireccionesDiagonales_ah_ga());
+  calcularMovimientos_ahga() {
+    const direcciones_ahga = this.obtenerDireccionesBase_ahga();
+    if (
+      ValidadorMovimiento_ahga.puedeMoverDiagonal_ahga(
+        this.tablero_ahga,
+        this.pieza_ahga.filaPosicion_ahga,
+        this.pieza_ahga.columnaPosicion_ahga
+      )
+    ) {
+      direcciones_ahga.push(...this.obtenerDireccionesDiagonales_ahga());
     }
 
-    return direcciones_ah_ga
-      .map(([df_ah_ga, dc_ah_ga]) => ({
-        fila_ah_ga: this.pieza_ah_ga.filaPosicion_ah_ga + df_ah_ga,
-        columna_ah_ga: this.pieza_ah_ga.columnaPosicion_ah_ga + dc_ah_ga,
-        deltaFila_ah_ga: df_ah_ga
+    return direcciones_ahga
+      .map(([df_ahga, dc_ahga]) => ({
+        fila_ahga: this.pieza_ahga.filaPosicion_ahga + df_ahga,
+        columna_ahga: this.pieza_ahga.columnaPosicion_ahga + dc_ahga,
+        deltaFila_ahga: df_ahga,
       }))
-      .filter(({ fila_ah_ga, columna_ah_ga, deltaFila_ah_ga }) =>
-        this.esMovimientoValido_ah_ga(fila_ah_ga, columna_ah_ga, deltaFila_ah_ga))
-      .map(({ fila_ah_ga, columna_ah_ga }) => ({
-        fila_ah_ga: fila_ah_ga,
-        columna_ah_ga: columna_ah_ga,
-        esCaptura_ah_ga: false
+      .filter(({ fila_ahga, columna_ahga, deltaFila_ahga }) =>
+        this.esMovimientoValido_ahga(fila_ahga, columna_ahga, deltaFila_ahga)
+      )
+      .map(({ fila_ahga, columna_ahga }) => ({
+        fila_ahga: fila_ahga,
+        columna_ahga: columna_ahga,
+        esCaptura_ahga: false,
       }));
   }
 
-  esMovimientoValido_ah_ga(fila_ah_ga, columna_ah_ga, deltaFila_ah_ga) {
-    if (!ValidadorMovimiento_ah_ga.esCasillaValida_ah_ga(this.tablero_ah_ga, fila_ah_ga, columna_ah_ga) ||
-      ValidadorMovimiento_ah_ga.esCasillaOcupada_ah_ga(this.tablero_ah_ga, fila_ah_ga, columna_ah_ga)) {
+  esMovimientoValido_ahga(fila_ahga, columna_ahga, deltaFila_ahga) {
+    if (
+      !ValidadorMovimiento_ahga.esCasillaValida_ahga(
+        this.tablero_ahga,
+        fila_ahga,
+        columna_ahga
+      ) ||
+      ValidadorMovimiento_ahga.esCasillaOcupada_ahga(
+        this.tablero_ahga,
+        fila_ahga,
+        columna_ahga
+      )
+    ) {
       return false;
     }
 
-    const enFortaleza_ah_ga = this.tablero_ah_ga.esCasillaFortaleza_ah_ga(
-      this.pieza_ah_ga.filaPosicion_ah_ga,
-      this.pieza_ah_ga.columnaPosicion_ah_ga
+    const enFortaleza_ahga = this.tablero_ahga.esCasillaFortaleza_ahga(
+      this.pieza_ahga.filaPosicion_ahga,
+      this.pieza_ahga.columnaPosicion_ahga
     );
 
-    if (!enFortaleza_ah_ga) {
-      return deltaFila_ah_ga <= 0 ||
-        (deltaFila_ah_ga === 0 && fila_ah_ga <= this.pieza_ah_ga.filaPosicion_ah_ga);
+    if (!enFortaleza_ahga) {
+      return (
+        deltaFila_ahga <= 0 ||
+        (deltaFila_ahga === 0 && fila_ahga <= this.pieza_ahga.filaPosicion_ahga)
+      );
     }
-    return this.tablero_ah_ga.esCasillaFortaleza_ah_ga(fila_ah_ga, columna_ah_ga);
+    return this.tablero_ahga.esCasillaFortaleza_ahga(fila_ahga, columna_ahga);
   }
 }
 
 /* Estrategia de movimiento para oficiales */
-class EstrategiaMovimientoOficial_ah_ga {
-  constructor(pieza_ah_ga, tablero_ah_ga) {
-    this.pieza_ah_ga = pieza_ah_ga;
-    this.tablero_ah_ga = tablero_ah_ga;
+class EstrategiaMovimientoOficial_ahga {
+  constructor(pieza_ahga, tablero_ahga) {
+    this.pieza_ahga = pieza_ahga;
+    this.tablero_ahga = tablero_ahga;
   }
 
-  calcularMovimientos_ah_ga() {
-    const capturas_ah_ga = this.calcularCapturas_ah_ga();
-    return capturas_ah_ga.length > 0 ? capturas_ah_ga : this.calcularMovimientosNormales_ah_ga();
+  calcularMovimientos_ahga() {
+    const capturas_ahga = this.calcularCapturas_ahga();
+    return capturas_ahga.length > 0
+      ? capturas_ahga
+      : this.calcularMovimientosNormales_ahga();
   }
 
-  calcularMovimientosNormales_ah_ga() {
-    const direcciones_ah_ga = this.obtenerDirecciones_ah_ga();
-    const movimientos_ah_ga = [];
+  calcularMovimientosNormales_ahga() {
+    const direcciones_ahga = this.obtenerDirecciones_ahga();
+    const movimientos_ahga = [];
 
-    for (const [df_ah_ga, dc_ah_ga] of direcciones_ah_ga) {
-      const fila_ah_ga = this.pieza_ah_ga.filaPosicion_ah_ga + df_ah_ga;
-      const columna_ah_ga = this.pieza_ah_ga.columnaPosicion_ah_ga + dc_ah_ga;
+    for (const [df_ahga, dc_ahga] of direcciones_ahga) {
+      const fila_ahga = this.pieza_ahga.filaPosicion_ahga + df_ahga;
+      const columna_ahga = this.pieza_ahga.columnaPosicion_ahga + dc_ahga;
 
-      if (ValidadorMovimiento_ah_ga.esCasillaValida_ah_ga(this.tablero_ah_ga, fila_ah_ga, columna_ah_ga) &&
-        !ValidadorMovimiento_ah_ga.esCasillaOcupada_ah_ga(this.tablero_ah_ga, fila_ah_ga, columna_ah_ga)) {
-        movimientos_ah_ga.push({
-          fila_ah_ga: fila_ah_ga,
-          columna_ah_ga: columna_ah_ga,
-          esCaptura_ah_ga: false
+      if (
+        ValidadorMovimiento_ahga.esCasillaValida_ahga(
+          this.tablero_ahga,
+          fila_ahga,
+          columna_ahga
+        ) &&
+        !ValidadorMovimiento_ahga.esCasillaOcupada_ahga(
+          this.tablero_ahga,
+          fila_ahga,
+          columna_ahga
+        )
+      ) {
+        movimientos_ahga.push({
+          fila_ahga: fila_ahga,
+          columna_ahga: columna_ahga,
+          esCaptura_ahga: false,
         });
       }
     }
-    return movimientos_ah_ga;
+    return movimientos_ahga;
   }
 
-  calcularCapturas_ah_ga() {
-    const capturas_ah_ga = [];
-    this.buscarSaltosCaptura_ah_ga(
-      this.pieza_ah_ga.filaPosicion_ah_ga,
-      this.pieza_ah_ga.columnaPosicion_ah_ga,
+  calcularCapturas_ahga() {
+    const capturas_ahga = [];
+    this.buscarSaltosCaptura_ahga(
+      this.pieza_ahga.filaPosicion_ahga,
+      this.pieza_ahga.columnaPosicion_ahga,
       new Set(),
       [],
-      capturas_ah_ga
+      capturas_ahga
     );
-    return capturas_ah_ga;
+    return capturas_ahga;
   }
 
-  obtenerDirecciones_ah_ga() {
-    let direcciones_ah_ga = [
-      [-1, 0], [1, 0], [0, -1], [0, 1]
+  obtenerDirecciones_ahga() {
+    let direcciones_ahga = [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
     ];
 
-    if (ValidadorMovimiento_ah_ga.puedeMoverDiagonal_ah_ga(
-      this.tablero_ah_ga,
-      this.pieza_ah_ga.filaPosicion_ah_ga,
-      this.pieza_ah_ga.columnaPosicion_ah_ga
-    )) {
-      direcciones_ah_ga.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
+    if (
+      ValidadorMovimiento_ahga.puedeMoverDiagonal_ahga(
+        this.tablero_ahga,
+        this.pieza_ahga.filaPosicion_ahga,
+        this.pieza_ahga.columnaPosicion_ahga
+      )
+    ) {
+      direcciones_ahga.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
     }
-    return direcciones_ah_ga;
+    return direcciones_ahga;
   }
 
-  buscarSaltosCaptura_ah_ga(filaActual_ah_ga, columnaActual_ah_ga, visitadas_ah_ga, capturadas_ah_ga, resultado_ah_ga) {
-    for (const [df_ah_ga, dc_ah_ga] of this.obtenerDirecciones_ah_ga()) {
-      const filaIntermedia_ah_ga = filaActual_ah_ga + df_ah_ga;
-      const columnaIntermedia_ah_ga = columnaActual_ah_ga + dc_ah_ga;
-      const filaDestino_ah_ga = filaActual_ah_ga + 2 * df_ah_ga;
-      const columnaDestino_ah_ga = columnaActual_ah_ga + 2 * dc_ah_ga;
+  buscarSaltosCaptura_ahga(
+    filaActual_ahga,
+    columnaActual_ahga,
+    visitadas_ahga,
+    capturadas_ahga,
+    resultado_ahga
+  ) {
+    for (const [df_ahga, dc_ahga] of this.obtenerDirecciones_ahga()) {
+      const filaIntermedia_ahga = filaActual_ahga + df_ahga;
+      const columnaIntermedia_ahga = columnaActual_ahga + dc_ahga;
+      const filaDestino_ahga = filaActual_ahga + 2 * df_ahga;
+      const columnaDestino_ahga = columnaActual_ahga + 2 * dc_ahga;
 
-      if (this.esSaltoValido_ah_ga(
-        filaIntermedia_ah_ga, columnaIntermedia_ah_ga,
-        filaDestino_ah_ga, columnaDestino_ah_ga,
-        visitadas_ah_ga, capturadas_ah_ga
-      )) {
-        const nuevasCapturas_ah_ga = [...capturadas_ah_ga,
-        { fila: filaIntermedia_ah_ga, columna: columnaIntermedia_ah_ga }];
-        visitadas_ah_ga.add(`${filaDestino_ah_ga},${columnaDestino_ah_ga}`);
+      if (
+        this.esSaltoValido_ahga(
+          filaIntermedia_ahga,
+          columnaIntermedia_ahga,
+          filaDestino_ahga,
+          columnaDestino_ahga,
+          visitadas_ahga,
+          capturadas_ahga
+        )
+      ) {
+        const nuevasCapturas_ahga = [
+          ...capturadas_ahga,
+          { fila: filaIntermedia_ahga, columna: columnaIntermedia_ahga },
+        ];
+        visitadas_ahga.add(`${filaDestino_ahga},${columnaDestino_ahga}`);
 
-        resultado_ah_ga.push({
-          fila_ah_ga: filaDestino_ah_ga,
-          columna_ah_ga: columnaDestino_ah_ga,
-          esCaptura_ah_ga: true,
-          capturada_ah_ga: { fila: filaIntermedia_ah_ga, columna: columnaIntermedia_ah_ga }
+        resultado_ahga.push({
+          fila_ahga: filaDestino_ahga,
+          columna_ahga: columnaDestino_ahga,
+          esCaptura_ahga: true,
+          capturada_ahga: {
+            fila: filaIntermedia_ahga,
+            columna: columnaIntermedia_ahga,
+          },
         });
 
-        this.buscarSaltosCaptura_ah_ga(
-          filaDestino_ah_ga, columnaDestino_ah_ga,
-          visitadas_ah_ga, nuevasCapturas_ah_ga, resultado_ah_ga
+        this.buscarSaltosCaptura_ahga(
+          filaDestino_ahga,
+          columnaDestino_ahga,
+          visitadas_ahga,
+          nuevasCapturas_ahga,
+          resultado_ahga
         );
       }
     }
   }
 
-  esSaltoValido_ah_ga(filaIntermedia_ah_ga, columnaIntermedia_ah_ga, filaDestino_ah_ga, columnaDestino_ah_ga, visitadas_ah_ga, capturadas_ah_ga) {
+  esSaltoValido_ahga(
+    filaIntermedia_ahga,
+    columnaIntermedia_ahga,
+    filaDestino_ahga,
+    columnaDestino_ahga,
+    visitadas_ahga,
+    capturadas_ahga
+  ) {
     // Validación completa del salto
-    if (!ValidadorMovimiento_ah_ga.esCasillaValida_ah_ga(this.tablero_ah_ga, filaIntermedia_ah_ga, columnaIntermedia_ah_ga) ||
-      !ValidadorMovimiento_ah_ga.esCasillaValida_ah_ga(this.tablero_ah_ga, filaDestino_ah_ga, columnaDestino_ah_ga) ||
-      visitadas_ah_ga.has(`${filaDestino_ah_ga},${columnaDestino_ah_ga}`)) {
+    if (
+      !ValidadorMovimiento_ahga.esCasillaValida_ahga(
+        this.tablero_ahga,
+        filaIntermedia_ahga,
+        columnaIntermedia_ahga
+      ) ||
+      !ValidadorMovimiento_ahga.esCasillaValida_ahga(
+        this.tablero_ahga,
+        filaDestino_ahga,
+        columnaDestino_ahga
+      ) ||
+      visitadas_ahga.has(`${filaDestino_ahga},${columnaDestino_ahga}`)
+    ) {
       return false;
     }
 
-    const casillaIntermedia_ah_ga = this.tablero_ah_ga.obtenerCasilla_ah_ga(filaIntermedia_ah_ga, columnaIntermedia_ah_ga);
-    const casillaDestino_ah_ga = this.tablero_ah_ga.obtenerCasilla_ah_ga(filaDestino_ah_ga, columnaDestino_ah_ga);
+    const casillaIntermedia_ahga = this.tablero_ahga.obtenerCasilla_ahga(
+      filaIntermedia_ahga,
+      columnaIntermedia_ahga
+    );
+    const casillaDestino_ahga = this.tablero_ahga.obtenerCasilla_ahga(
+      filaDestino_ahga,
+      columnaDestino_ahga
+    );
 
-    const piezaIntermedia_ah_ga = casillaIntermedia_ah_ga.pieza_ah_ga;
-    const piezaYaCapturada_ah_ga = capturadas_ah_ga.some(p_ah_ga =>
-      p_ah_ga.fila === filaIntermedia_ah_ga && p_ah_ga.columna === columnaIntermedia_ah_ga);
+    const piezaIntermedia_ahga = casillaIntermedia_ahga.pieza_ahga;
+    const piezaYaCapturada_ahga = capturadas_ahga.some(
+      (p_ahga) =>
+        p_ahga.fila === filaIntermedia_ahga &&
+        p_ahga.columna === columnaIntermedia_ahga
+    );
 
-    return piezaIntermedia_ah_ga &&
-      piezaIntermedia_ah_ga.tipoPieza_ah_ga === 'soldado' &&
-      !casillaDestino_ah_ga.pieza_ah_ga &&
-      !piezaYaCapturada_ah_ga;
+    return (
+      piezaIntermedia_ahga &&
+      piezaIntermedia_ahga.tipoPieza_ahga === "soldado" &&
+      !casillaDestino_ahga.pieza_ahga &&
+      !piezaYaCapturada_ahga
+    );
   }
 }
 
 /* Clases concretas para cada tipo de pieza */
-export class Soldado_ah_ga extends PiezaBase_ah_ga {
-  constructor(filaPosicion_ah_ga, columnaPosicion_ah_ga) {
-    super('soldado', filaPosicion_ah_ga, columnaPosicion_ah_ga);
-    this.estrategiaMovimiento_ah_ga = new EstrategiaMovimientoSoldado_ah_ga(this);
+export class Soldado_ahga extends PiezaBase_ahga {
+  constructor(filaPosicion_ahga, columnaPosicion_ahga) {
+    super("soldado", filaPosicion_ahga, columnaPosicion_ahga);
+    this.estrategiaMovimiento_ahga = new EstrategiaMovimientoSoldado_ahga(this);
   }
 
-  calcularMovimientosValidos_ah_ga(tableroJuego_ah_ga) {
-    this.estrategiaMovimiento_ah_ga.tablero_ah_ga = tableroJuego_ah_ga;
-    return this.estrategiaMovimiento_ah_ga.calcularMovimientos_ah_ga();
+  calcularMovimientosValidos_ahga(tableroJuego_ahga) {
+    this.estrategiaMovimiento_ahga.tablero_ahga = tableroJuego_ahga;
+    return this.estrategiaMovimiento_ahga.calcularMovimientos_ahga();
   }
 }
 
-export class Oficial_ah_ga extends PiezaBase_ah_ga {
-  constructor(filaPosicion_ah_ga, columnaPosicion_ah_ga) {
-    super('oficial', filaPosicion_ah_ga, columnaPosicion_ah_ga);
-    this.estrategiaMovimiento_ah_ga = new EstrategiaMovimientoOficial_ah_ga(this);
+export class Oficial_ahga extends PiezaBase_ahga {
+  constructor(filaPosicion_ahga, columnaPosicion_ahga) {
+    super("oficial", filaPosicion_ahga, columnaPosicion_ahga);
+    this.estrategiaMovimiento_ahga = new EstrategiaMovimientoOficial_ahga(this);
   }
 
-  calcularMovimientosValidos_ah_ga(tableroJuego_ah_ga) {
-    this.estrategiaMovimiento_ah_ga.tablero_ah_ga = tableroJuego_ah_ga;
-    return this.estrategiaMovimiento_ah_ga.calcularMovimientos_ah_ga();
+  calcularMovimientosValidos_ahga(tableroJuego_ahga) {
+    this.estrategiaMovimiento_ahga.tablero_ahga = tableroJuego_ahga;
+    return this.estrategiaMovimiento_ahga.calcularMovimientos_ahga();
   }
 }
 
 /* Factory para creación de piezas */
-export class PiezaFactory_ah_ga {
-  static crearPieza_ah_ga(tipo_ah_ga, fila_ah_ga, columna_ah_ga) {
-    switch (tipo_ah_ga) {
-      case 'soldado':
-        return new Soldado_ah_ga(fila_ah_ga, columna_ah_ga);
-      case 'oficial':
-        return new Oficial_ah_ga(fila_ah_ga, columna_ah_ga);
+export class PiezaFactory_ahga {
+  static crearPieza_ahga(tipo_ahga, fila_ahga, columna_ahga) {
+    switch (tipo_ahga) {
+      case "soldado":
+        return new Soldado_ahga(fila_ahga, columna_ahga);
+      case "oficial":
+        return new Oficial_ahga(fila_ahga, columna_ahga);
       default:
-        throw new Error(`Tipo de pieza no válido: ${tipo_ah_ga}`);
+        throw new Error(`Tipo de pieza no válido: ${tipo_ahga}`);
     }
   }
 }
